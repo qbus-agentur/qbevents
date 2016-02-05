@@ -30,6 +30,15 @@
 			<trans-unit id="tx_qbevents_domain_model_event.dates">
 				<source>Dates</source>
 			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_eventdate.type">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_eventdate.type.standard">
+				<source>Standard</source>
+			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_eventdate.type.repeat">
+				<source>Repeat</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

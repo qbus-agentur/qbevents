@@ -4,6 +4,7 @@ return array(
         'title' => 'LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate',
         'label' => 'start',
         'hideTable' => true,
+        'type' => 'type',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -17,14 +18,14 @@ return array(
         'enablecolumns' => array(
             'disabled' => 'hidden',
         ),
-        'searchFields' => 'start,end,is_full_day',
+        'searchFields' => 'start,end,is_full_day,type',
         'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('qbevents') . 'Resources/Public/Icons/tx_qbevents_domain_model_eventdate.gif'
     ),
     'interface' => array(
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, start, end, is_full_day',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, start, end, is_full_day, type',
     ),
     'types' => array(
-        '1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, start, end, is_full_day'),
+        '1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, start, end, is_full_day, type'),
     ),
     'palettes' => array(
         '1' => array('showitem' => ''),
@@ -112,6 +113,26 @@ return array(
             ),
         ),
         'event' => array(
+            'config' => array(
+                'type' => 'passthrough',
+            ),
+        ),
+        'type' => array(
+            'exclude' => 1,
+            'label' => 'LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.type',
+            'config' => array(
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'size' => 1,
+                'maxitems' => 1,
+                'items' => [
+                    ['LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.type.standard', 0],
+                    ['LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.type.repeat', 1],
+                ],
+                'eval' => ''
+            ),
+        ),
+        'base_date' => array(
             'config' => array(
                 'type' => 'passthrough',
             ),

@@ -28,6 +28,20 @@ class EventDate extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $isFullDay = false;
 
     /**
+     * type
+     *
+     * @var int
+     */
+    protected $type = 0;
+
+    /**
+     * baseDate
+     *
+     * @var int
+     */
+    protected $baseDate = 0;
+
+    /**
      * Returns the start
      *
      * @return DateTime $start
@@ -88,5 +102,47 @@ class EventDate extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setIsFullDay($isFullDay)
     {
         $this->isFullDay = $isFullDay;
+    }
+
+    /**
+     * Returns the type
+     *
+     * @return int $type
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Sets the type
+     *
+     * @param  int $type
+     * @return void
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+
+    /**
+     * Returns the baseDate
+     *
+     * @return int $baseDate
+     */
+    public function getBaseDate()
+    {
+        return $this->baseDate;
+    }
+
+    /**
+     * Sets the baseDate
+     *
+     * @param  int $baseDate
+     * @return void
+     */
+    public function setBaseDate($baseDate)
+    {
+        $this->baseDate = $baseDate;
     }
 }
