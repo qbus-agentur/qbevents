@@ -25,10 +25,13 @@ return array(
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, start, end, is_full_day, type',
     ),
     'types' => array(
-        '1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, start, end, is_full_day, type'),
+        '1' => array('showitem' => '--palette--;;basic,--palette--;;date, --palette--;;hidden'),
     ),
     'palettes' => array(
         '1' => array('showitem' => ''),
+        'basic' => array('showitem' => 'type, is_full_day', 'canNotCollapse' => 1),
+        'date' => array('showitem' => 'start, end', 'canNotCollapse' => 1),
+        'hidden' => array('hidden, sys_language_uid, l10n_parent, l10n_diffsource', 'isHiddenPalette' => true),
     ),
     'columns' => array(
         'sys_language_uid' => array(
@@ -73,10 +76,11 @@ return array(
             )
         ),
         'hidden' => array(
-            'exclude' => 1,
+            'exclude' => 0,
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
             'config' => array(
                 'type' => 'check',
+                'default' => '0'
             ),
         ),
         'start' => array(
