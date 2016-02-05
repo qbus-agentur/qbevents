@@ -15,9 +15,6 @@
 			<trans-unit id="type.description">
 				<source>type</source>
 			</trans-unit>
-			<trans-unit id="base_date.description">
-				<source>base_date</source>
-			</trans-unit>
 		</body>
 	</file>
 </xliff>
