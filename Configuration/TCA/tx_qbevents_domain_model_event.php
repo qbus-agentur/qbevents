@@ -136,9 +136,9 @@ return array(
                 'type' => 'text',
                 'cols' => 40,
                 'rows' => 15,
-                'defaultExtras' => 'richtext[]:rte_transform[mode=ts_links]',
                 'eval' => 'trim'
             ),
+            'defaultExtras' => 'richtext[]:rte_transform[mode=ts_links]',
         ),
         'dates' => array(
             'exclude' => 1,
