@@ -2,6 +2,7 @@
 return array(
     'ctrl' => array(
         'title' => 'LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate',
+        'formattedLabel_userFunc' => \Qbus\Qbevents\Service\EventDateInlineLabelService::class . '->getInlineLabel',
         'label' => 'start',
         'hideTable' => true,
         'type' => 'type',
