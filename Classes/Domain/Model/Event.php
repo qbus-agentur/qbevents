@@ -1,6 +1,8 @@
 <?php
 namespace Qbus\Qbevents\Domain\Model;
 
+use Qbus\Qbevents\Domain\Model\EventDate;
+
 /**
  * Event
  */
@@ -26,6 +28,22 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var string
      */
     protected $teaser = '';
+
+    /**
+     * dates
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Qbus\Qbevents\Domain\Model\EventDate>
+     * @cascade remove
+     */
+    protected $dates = null;
+
+    /**
+     * __construct
+     */
+    public function __construct()
+    {
+        $this->dates = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+    }
 
     /**
      * Returns the title
@@ -88,5 +106,48 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setTeaser($teaser)
     {
         $this->teaser = $teaser;
+    }
+
+    /**
+     * Adds a Date
+     *
+     * @param  EventDate $date
+     * @return void
+     */
+    public function addDate(EventDate $date)
+    {
+        $this->dates->attach($dates);
+    }
+
+    /**
+     * Removes a Date
+     *
+     * @param  EventDate $dateToRemove The Date to be removed
+     * @return void
+     */
+    public function removeDate(EventDate $dateToRemove)
+    {
+        $this->dates->detach($datesToRemove);
+    }
+
+    /**
+     * Returns the dates
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Qbus\Qbevents\Domain\Model\EventDate> $dates
+     */
+    public function getDates()
+    {
+        return $this->dates;
+    }
+
+    /**
+     * Sets the dates
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Qbus\Qbevents\Domain\Model\EventDate> $dates
+     * @return void
+     */
+    public function setDates($dates)
+    {
+        $this->dates = $dates;
     }
 }

@@ -12,6 +12,9 @@
 			<trans-unit id="teaser.description">
 				<source>teaser</source>
 			</trans-unit>
+			<trans-unit id="dates.description">
+				<source>dates</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

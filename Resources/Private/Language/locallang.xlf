@@ -27,6 +27,9 @@
 			<trans-unit id="tx_qbevents_domain_model_eventdate.is_full_day">
 				<source>IsFullDay</source>
 			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_event.dates">
+				<source>Dates</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

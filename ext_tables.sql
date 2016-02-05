@@ -9,6 +9,7 @@ CREATE TABLE tx_qbevents_domain_model_event (
 	title varchar(255) DEFAULT '' NOT NULL,
 	location varchar(255) DEFAULT '' NOT NULL,
 	teaser text NOT NULL,
+	dates int(11) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -48,6 +49,7 @@ CREATE TABLE tx_qbevents_domain_model_eventdate (
 	start datetime DEFAULT '0000-00-00 00:00:00',
 	end datetime DEFAULT '0000-00-00 00:00:00',
 	is_full_day tinyint(1) unsigned DEFAULT '0' NOT NULL,
+	event int(11) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,

@@ -3,6 +3,7 @@ return array(
     'ctrl' => array(
         'title' => 'LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate',
         'label' => 'start',
+        'hideTable' => true,
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -108,6 +109,11 @@ return array(
                 'type' => 'check',
                 'default' => 0,
                 'eval' => ''
+            ),
+        ),
+        'event' => array(
+            'config' => array(
+                'type' => 'passthrough',
             ),
         ),
     ),
