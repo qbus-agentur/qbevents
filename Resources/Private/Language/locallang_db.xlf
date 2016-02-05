@@ -15,6 +15,12 @@
 			<trans-unit id="tx_qbevents_domain_model_event.teaser">
 				<source>Teaser</source>
 			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_event.dates">
+				<source>Dates</source>
+			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_event.dates.add">
+				<source>Add dates</source>
+			</trans-unit>
 			<trans-unit id="tx_qbevents_domain_model_eventdate">
 				<source>EventDate</source>
 			</trans-unit>
@@ -26,9 +32,6 @@
 			</trans-unit>
 			<trans-unit id="tx_qbevents_domain_model_eventdate.is_full_day">
 				<source>IsFullDay</source>
-			</trans-unit>
-			<trans-unit id="tx_qbevents_domain_model_event.dates">
-				<source>Dates</source>
 			</trans-unit>
 			<trans-unit id="tx_qbevents_domain_model_eventdate.type">
 				<source>Type</source>
