@@ -9,6 +9,9 @@
 			<trans-unit id="location.description">
 				<source>location</source>
 			</trans-unit>
+			<trans-unit id="teaser.description">
+				<source>teaser</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

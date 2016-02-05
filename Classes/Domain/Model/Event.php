@@ -21,6 +21,13 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $location = '';
 
     /**
+     * teaser
+     *
+     * @var string
+     */
+    protected $teaser = '';
+
+    /**
      * Returns the title
      *
      * @return string $title
@@ -60,5 +67,26 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setLocation($location)
     {
         $this->location = $location;
+    }
+
+    /**
+     * Returns the teaser
+     *
+     * @return string $teaser
+     */
+    public function getTeaser()
+    {
+        return $this->teaser;
+    }
+
+    /**
+     * Sets the teaser
+     *
+     * @param  string $teaser
+     * @return void
+     */
+    public function setTeaser($teaser)
+    {
+        $this->teaser = $teaser;
     }
 }
