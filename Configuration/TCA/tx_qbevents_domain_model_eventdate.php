@@ -131,7 +131,7 @@ return array(
                 'maxitems' => 1,
                 'items' => [
                     ['LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.type.standard', 0],
-                    ['LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.type.repeat', 1],
+                    //['LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.type.repeat', 1],
                 ],
                 'eval' => ''
             ),
