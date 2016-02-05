@@ -45,6 +45,9 @@ CREATE TABLE tx_qbevents_domain_model_eventdate (
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
 
+	start datetime DEFAULT '0000-00-00 00:00:00',
+	end datetime DEFAULT '0000-00-00 00:00:00',
+	is_full_day tinyint(1) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,

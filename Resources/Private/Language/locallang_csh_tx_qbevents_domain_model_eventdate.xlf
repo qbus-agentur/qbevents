@@ -3,6 +3,15 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2016-02-05T12:12:25Z" product-name="qbevents">
 		<header/>
 		<body>
+			<trans-unit id="start.description">
+				<source>start</source>
+			</trans-unit>
+			<trans-unit id="end.description">
+				<source>end</source>
+			</trans-unit>
+			<trans-unit id="is_full_day.description">
+				<source>is_full_day</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

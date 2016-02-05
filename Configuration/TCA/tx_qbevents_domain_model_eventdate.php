@@ -2,7 +2,7 @@
 return array(
     'ctrl' => array(
         'title' => 'LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate',
-        'label' => 'uid',
+        'label' => 'start',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -16,14 +16,14 @@ return array(
         'enablecolumns' => array(
             'disabled' => 'hidden',
         ),
-        'searchFields' => '',
+        'searchFields' => 'start,end,is_full_day',
         'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('qbevents') . 'Resources/Public/Icons/tx_qbevents_domain_model_eventdate.gif'
     ),
     'interface' => array(
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, start, end, is_full_day',
     ),
     'types' => array(
-        '1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1'),
+        '1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, start, end, is_full_day'),
     ),
     'palettes' => array(
         '1' => array('showitem' => ''),
@@ -75,6 +75,39 @@ return array(
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
             'config' => array(
                 'type' => 'check',
+            ),
+        ),
+        'start' => array(
+            'exclude' => 1,
+            'label' => 'LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.start',
+            'config' => array(
+                'type' => 'input',
+                'dbType' => 'datetime',
+                'size' => 12,
+                'checkbox' => 0,
+                'default' => '0000-00-00 00:00:00',
+                'eval' => 'datetime'
+            ),
+        ),
+        'end' => array(
+            'exclude' => 1,
+            'label' => 'LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.end',
+            'config' => array(
+                'type' => 'input',
+                'dbType' => 'datetime',
+                'size' => 12,
+                'checkbox' => 0,
+                'default' => '0000-00-00 00:00:00',
+                'eval' => 'datetime'
+            ),
+        ),
+        'is_full_day' => array(
+            'exclude' => 1,
+            'label' => 'LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.is_full_day',
+            'config' => array(
+                'type' => 'check',
+                'default' => 0,
+                'eval' => ''
             ),
         ),
     ),

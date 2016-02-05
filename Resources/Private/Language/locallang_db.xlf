@@ -18,6 +18,15 @@
 			<trans-unit id="tx_qbevents_domain_model_eventdate">
 				<source>EventDate</source>
 			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_eventdate.start">
+				<source>Start</source>
+			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_eventdate.end">
+				<source>End</source>
+			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_eventdate.is_full_day">
+				<source>IsFullDay</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
