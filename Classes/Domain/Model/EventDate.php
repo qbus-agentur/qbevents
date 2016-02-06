@@ -7,6 +7,13 @@ namespace Qbus\Qbevents\Domain\Model;
 class EventDate extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
     /**
+     * hidden
+     *
+     * @var bool
+     */
+    protected $hidden = 0;
+
+    /**
      * start
      *
      * @var DateTime
@@ -28,13 +35,6 @@ class EventDate extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $isFullDay = false;
 
     /**
-     * type
-     *
-     * @var int
-     */
-    protected $type = 0;
-
-    /**
      * baseDate
      *
      * @var int
@@ -47,6 +47,41 @@ class EventDate extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \Qbus\Qbevents\Domain\Model\Event
      */
     protected $event = null;
+
+    /**
+     * frequency
+     *
+     * @var int
+     */
+    protected $frequency = '';
+
+    /**
+     * frequencyCount
+     *
+     * @var int
+     */
+    protected $frequencyCount = 0;
+
+    /**
+     * Gets hidden
+     *
+     * @return bool
+     */
+    public function getHidden()
+    {
+        return $this->hidden;
+    }
+
+    /**
+     * Sets hidden
+     *
+     * @param  bool $hidden
+     * @return void
+     */
+    public function setHidden($hidden)
+    {
+        $this->hidden = $hidden;
+    }
 
     /**
      * Returns the start
@@ -112,27 +147,6 @@ class EventDate extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the type
-     *
-     * @return int $type
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * Sets the type
-     *
-     * @param  int $type
-     * @return void
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-    }
-
-    /**
      * Returns the baseDate
      *
      * @return int $baseDate
@@ -145,7 +159,7 @@ class EventDate extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the baseDate
      *
-     * @param  int $baseDate
+     * @param  int  $baseDate
      * @return void
      */
     public function setBaseDate($baseDate)
@@ -171,5 +185,47 @@ class EventDate extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setEvent($event)
     {
         $this->event = $event;
+    }
+
+    /**
+     * Returns the frequency
+     *
+     * @return int $frequency
+     */
+    public function getFrequency()
+    {
+        return $this->frequency;
+    }
+
+    /**
+     * Sets the frequency
+     *
+     * @param  int  $frequency
+     * @return void
+     */
+    public function setFrequency($frequency)
+    {
+        $this->frequency = $frequency;
+    }
+
+    /**
+     * Returns the frequencyCount
+     *
+     * @return int $frequencyCount
+     */
+    public function getFrequencyCount()
+    {
+        return $this->frequencyCount;
+    }
+
+    /**
+     * Sets the frequencyCount
+     *
+     * @param  int  $frequencyCount
+     * @return void
+     */
+    public function setFrequencyCount($frequencyCount)
+    {
+        $this->frequencyCount = $frequencyCount;
     }
 }

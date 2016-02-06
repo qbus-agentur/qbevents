@@ -25,5 +25,8 @@ $EM_CONF[$_EXTKEY] = array(
         'psr-4' => array(
             'Qbus\\Qbevents\\' => 'Classes',
         ),
+        'classmap' => array(
+            'Resources/Private/PHP',
+        ),
     ),
 );

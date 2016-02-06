@@ -15,4 +15,27 @@ class EventDateRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     protected $defaultOrderings = [
         'start' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
     ];
+
+    /*
+     * @param int        $uid
+     * @param array|NULL $enableFieldsToBeIgnored
+     *
+     * @return void
+     */
+    public function findRecurrencesByUid($uid, $enableFieldsToBeIgnored = null)
+    {
+        $query = $this->createQuery();
+        $query->getQuerySettings()->setRespectStoragePage(false);
+
+        if ($enableFieldsToBeIgnored) {
+            $query->getQuerySettings()->setIgnoreEnableFields(true);
+            $query->getQuerySettings()->setEnableFieldsToBeIgnored($enableFieldsToBeIgnored);
+        }
+
+        $query->matching(
+            $query->equals('baseDate', $uid)
+        );
+
+        return $query->execute();
+    }
 }

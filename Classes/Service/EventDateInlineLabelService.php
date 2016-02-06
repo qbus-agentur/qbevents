@@ -1,7 +1,6 @@
 <?php
 namespace Qbus\Qbevents\Service;
 
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\MathUtility;
 
 /**
@@ -13,7 +12,7 @@ use TYPO3\CMS\Core\Utility\MathUtility;
 class EventDateInlineLabelService
 {
     /**
-     * @param array $params
+     * @param  array $params
      * @return void
      */
     public function getInlineLabel(array &$params)

@@ -1,0 +1,2 @@
+# cat=basic/all/10; type=int+; label=Virtual date recurrence limit
+recurrence_virtual_limit = 732

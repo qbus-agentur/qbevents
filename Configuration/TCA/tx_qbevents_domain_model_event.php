@@ -147,6 +147,9 @@ return array(
                 'type' => 'inline',
                 'foreign_table' => 'tx_qbevents_domain_model_eventdate',
                 'foreign_field' => 'event',
+                'foreign_match_fields' => array(
+                    'base_date' => 0,
+                ),
                 'maxitems' => 9999,
                 'appearance' => [
                     'newRecordLinkTitle' => 'LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_event.dates.add',

@@ -31,16 +31,28 @@
 				<source>End</source>
 			</trans-unit>
 			<trans-unit id="tx_qbevents_domain_model_eventdate.is_full_day">
-				<source>IsFullDay</source>
+				<source>Full-Time</source>
 			</trans-unit>
-			<trans-unit id="tx_qbevents_domain_model_eventdate.type">
-				<source>Type</source>
+			<trans-unit id="tx_qbevents_domain_model_eventdate.frequency">
+				<source>Recurrence</source>
 			</trans-unit>
-			<trans-unit id="tx_qbevents_domain_model_eventdate.type.standard">
-				<source>Standard</source>
+			<trans-unit id="tx_qbevents_domain_model_eventdate.frequency.0">
+				<source>None</source>
 			</trans-unit>
-			<trans-unit id="tx_qbevents_domain_model_eventdate.type.repeat">
-				<source>Repeat</source>
+			<trans-unit id="tx_qbevents_domain_model_eventdate.frequency.1">
+				<source>Yearly</source>
+			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_eventdate.frequency.2">
+				<source>Monthly</source>
+			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_eventdate.frequency.3">
+				<source>Weekly</source>
+			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_eventdate.frequency.4">
+				<source>Daily</source>
+			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_eventdate.frequency_count">
+				<source>Number of recurrences</source>
 			</trans-unit>
 		</body>
 	</file>

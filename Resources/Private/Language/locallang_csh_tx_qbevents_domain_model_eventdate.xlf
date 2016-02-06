@@ -12,8 +12,11 @@
 			<trans-unit id="is_full_day.description">
 				<source>is_full_day</source>
 			</trans-unit>
-			<trans-unit id="type.description">
-				<source>type</source>
+			<trans-unit id="frequency.description">
+				<source>frequency</source>
+			</trans-unit>
+			<trans-unit id="frequency_count.description">
+				<source>frequency_count</source>
 			</trans-unit>
 		</body>
 	</file>

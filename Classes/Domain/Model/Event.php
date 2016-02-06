@@ -1,8 +1,6 @@
 <?php
 namespace Qbus\Qbevents\Domain\Model;
 
-use Qbus\Qbevents\Domain\Model\EventDate;
-
 /**
  * Event
  */
@@ -144,7 +142,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the dates
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Qbus\Qbevents\Domain\Model\EventDate> $dates
+     * @param  \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Qbus\Qbevents\Domain\Model\EventDate> $dates
      * @return void
      */
     public function setDates($dates)

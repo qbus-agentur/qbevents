@@ -1,0 +1,15 @@
+{
+    "name": "qbus/qbevents-t3x-dependencies",
+    "config": {
+        "vendor-dir": "./"
+    },
+    "authors": [
+        {
+            "name": "Benjamin Franzke",
+            "email": "bfr@qbus.de"
+        }
+    ],
+    "require": {
+	"simshaun/recurr": "0.6.1"
+    }
+}

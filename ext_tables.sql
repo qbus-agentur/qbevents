@@ -50,8 +50,9 @@ CREATE TABLE tx_qbevents_domain_model_eventdate (
 	end int(11) DEFAULT '0' NOT NULL,
 	is_full_day tinyint(1) unsigned DEFAULT '0' NOT NULL,
 	event int(11) unsigned DEFAULT '0' NOT NULL,
-	type int(11) DEFAULT '0' NOT NULL,
 	base_date int(11) unsigned DEFAULT '0' NOT NULL,
+	frequency int(11) DEFAULT '0' NOT NULL,
+	frequency_count int(11) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,

@@ -33,7 +33,7 @@ class EventDateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
      */
     public function listAction()
     {
-        $eventDates = $this->eventDateRepository->findAll();
+        $eventDates = $this->eventDateRepository->findByFrequency(0);
 
         $this->view->assign('dates', $eventDates);
     }

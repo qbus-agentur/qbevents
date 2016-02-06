@@ -5,7 +5,7 @@ return array(
         'formattedLabel_userFunc' => \Qbus\Qbevents\Service\EventDateInlineLabelService::class . '->getInlineLabel',
         'label' => 'start',
         'hideTable' => true,
-        'type' => 'type',
+        'type' => 'frequency',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -19,19 +19,24 @@ return array(
         'enablecolumns' => array(
             'disabled' => 'hidden',
         ),
-        'searchFields' => 'start,end,is_full_day,type',
+        'searchFields' => 'start,end,is_full_day,frequency,frequency_count',
         'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('qbevents') . 'Resources/Public/Icons/tx_qbevents_domain_model_eventdate.svg'
     ),
     'interface' => array(
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, start, end, is_full_day, type',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, start, end, is_full_day, frequency, frequency_count',
     ),
     'types' => array(
-        '1' => array('showitem' => '--palette--;;basic,--palette--;;date, --palette--;;hidden'),
+        '0' => array('showitem' => '--palette--;;date, --palette--;;basic, --palette--;;hidden'),
+        '1' => array('showitem' => '--palette--;;date, --palette--;;basic,--palette--;;recurrence, --palette--;;hidden'),
+        '2' => array('showitem' => '--palette--;;date, --palette--;;basic,--palette--;;recurrence, --palette--;;hidden'),
+        '3' => array('showitem' => '--palette--;;date, --palette--;;basic,--palette--;;recurrence, --palette--;;hidden'),
+        '4' => array('showitem' => '--palette--;;date, --palette--;;basic,--palette--;;recurrence, --palette--;;hidden'),
     ),
     'palettes' => array(
         '1' => array('showitem' => ''),
-        'basic' => array('showitem' => 'type, is_full_day', 'canNotCollapse' => 1),
+        'basic' => array('showitem' => 'frequency, is_full_day', 'canNotCollapse' => 1),
         'date' => array('showitem' => 'start, end', 'canNotCollapse' => 1),
+        'recurrence' => array('showitem' => 'frequency_count', 'canNotCollapse' => 1),
         'hidden' => array('showitem' => 'hidden, sys_language_uid, l10n_parent, l10n_diffsource', 'isHiddenPalette' => true),
     ),
     'columns' => array(
@@ -128,7 +133,7 @@ return array(
                 'maxitems' => 1,
                 'items' => [
                     ['LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.type.standard', 0],
-                    //['LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.type.repeat', 1],
+                    ['LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.type.recurring', 1],
                 ],
                 'eval' => ''
             ),
@@ -136,6 +141,33 @@ return array(
         'base_date' => array(
             'config' => array(
                 'type' => 'passthrough',
+            ),
+        ),
+        'frequency' => array(
+            'exclude' => 1,
+            'label' => 'LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.frequency',
+            'config' => array(
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'size' => 1,
+                'maxitems' => 1,
+                'items' => [
+                    ['LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.frequency.0', 0],
+                    ['LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.frequency.1', 1],
+                    ['LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.frequency.2', 2],
+                    ['LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.frequency.3', 3],
+                    ['LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.frequency.4', 4],
+                ],
+                'eval' => ''
+            ),
+        ),
+        'frequency_count' => array(
+            'exclude' => 1,
+            'label' => 'LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.frequency_count',
+            'config' => array(
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim,int'
             ),
         ),
     ),
