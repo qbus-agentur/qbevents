@@ -32,7 +32,7 @@ return array(
         '1' => array('showitem' => ''),
         'basic' => array('showitem' => 'type, is_full_day', 'canNotCollapse' => 1),
         'date' => array('showitem' => 'start, end', 'canNotCollapse' => 1),
-        'hidden' => array('hidden, sys_language_uid, l10n_parent, l10n_diffsource', 'isHiddenPalette' => true),
+        'hidden' => array('showitem' => 'hidden, sys_language_uid, l10n_parent, l10n_diffsource', 'isHiddenPalette' => true),
     ),
     'columns' => array(
         'sys_language_uid' => array(
