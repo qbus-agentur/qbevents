@@ -42,6 +42,13 @@ class EventDate extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $baseDate = 0;
 
     /**
+     * event
+     *
+     * @var \Qbus\Qbevents\Domain\Model\Event
+     */
+    protected $event = null;
+
+    /**
      * Returns the start
      *
      * @return DateTime $start
@@ -144,5 +151,25 @@ class EventDate extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setBaseDate($baseDate)
     {
         $this->baseDate = $baseDate;
+    }
+
+    /**
+     * Sets the Event
+     *
+     * @return \Qbus\Qbevents\Domain\Model\Event
+     */
+    public function getEvent()
+    {
+        return $this->event;
+    }
+
+    /**
+     * Gets the Event
+     *
+     * @var \Qbus\Qbevents\Domain\Model\Event $event
+     */
+    public function setEvent($event)
+    {
+        $this->event = $event;
     }
 }
