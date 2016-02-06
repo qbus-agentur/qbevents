@@ -33,6 +33,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * dates
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Qbus\Qbevents\Domain\Model\EventDate>
+     * @lazy
      * @cascade remove
      */
     protected $dates = null;
