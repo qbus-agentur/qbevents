@@ -19,7 +19,7 @@
 				<source>Dates</source>
 			</trans-unit>
 			<trans-unit id="tx_qbevents_domain_model_event.dates.add">
-				<source>Add dates</source>
+				<source>Add date</source>
 			</trans-unit>
 			<trans-unit id="tx_qbevents_domain_model_eventdate">
 				<source>EventDate</source>
