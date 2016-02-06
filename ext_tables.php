@@ -14,3 +14,9 @@ if (!defined('TYPO3_MODE')) {
     'tx_qbevents_domain_model_eventdate',
     'EXT:qbevents/Resources/Private/Language/locallang_csh_tx_qbevents_domain_model_eventdate.xlf'
 );
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+    $_EXTKEY,
+    'Events',
+    'Event System'
+);

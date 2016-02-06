@@ -1,0 +1,24 @@
+<f:for each="{dates}" as="date">
+	<div itemscope itemtype="http://schema.org/Event" class="event">
+		<h2>
+			<f:link.action action="show" arguments="{date: date}" additionalAttributes="{itemProp: 'url'}">
+				<span itemprop="name">{date.event.title}</span>
+			</f:link.action>
+		</h2>
+
+		<time datetime="{date.start->f:format.date(format: 'Y-m-d H:i')}" itemProp="startDate" class="start-date">{date.start->f:format.date(format: 'Y-m-d H:i')}</time>
+		<f:if condition="{date.end}">
+			– <time datetime="{date.end->f:format.date(format: 'Y-m-d H:i')}" itemProp="endDate" class="end-date">{date.end->f:format.date(format: 'Y-m-d H:i')}</time>
+		</f:if>
+
+		<f:if condition="{date.event.location}">
+			<span class="location" itemProp="location">{date.event.location}</span>
+		</f:if>
+
+		<f:if condition="{date.event.teaser}">
+			<div class="description" itemProp="description">
+				<f:format.html>{date.event.teaser}</f:format.html>
+			</div>
+		</f:if>
+	</div>
+</f:for>
