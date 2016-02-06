@@ -89,10 +89,8 @@ return array(
             'label' => 'LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.start',
             'config' => array(
                 'type' => 'input',
-                'dbType' => 'datetime',
                 'size' => 12,
                 'checkbox' => 0,
-                'default' => '0000-00-00 00:00:00',
                 'eval' => 'datetime'
             ),
         ),
@@ -101,10 +99,8 @@ return array(
             'label' => 'LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.end',
             'config' => array(
                 'type' => 'input',
-                'dbType' => 'datetime',
                 'size' => 12,
                 'checkbox' => 0,
-                'default' => '0000-00-00 00:00:00',
                 'eval' => 'datetime'
             ),
         ),
