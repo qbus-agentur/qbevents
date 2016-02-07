@@ -16,14 +16,14 @@ class EventDate extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * start
      *
-     * @var DateTime
+     * @var \DateTime
      */
     protected $start = null;
 
     /**
      * end
      *
-     * @var DateTime
+     * @var \DateTime
      */
     protected $end = null;
 
@@ -65,7 +65,7 @@ class EventDate extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * frequencyUntil
      *
-     * @var DateTime
+     * @var \DateTime
      */
     protected $frequencyUntil = null;
 
@@ -93,7 +93,7 @@ class EventDate extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the start
      *
-     * @return DateTime $start
+     * @return \DateTime $start
      */
     public function getStart()
     {
@@ -103,7 +103,7 @@ class EventDate extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the start
      *
-     * @param  DateTime $start
+     * @param  \DateTime $start
      * @return void
      */
     public function setStart($start)
@@ -114,7 +114,7 @@ class EventDate extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the end
      *
-     * @return DateTime $end
+     * @return \DateTime $end
      */
     public function getEnd()
     {
@@ -124,7 +124,7 @@ class EventDate extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the end
      *
-     * @param  DateTime $end
+     * @param  \DateTime $end
      * @return void
      */
     public function setEnd($end)
@@ -239,7 +239,7 @@ class EventDate extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the frequencyUntil
      *
-     * @return DateTime $frequencyUntil
+     * @return \DateTime $frequencyUntil
      */
     public function getFrequencyUntil()
     {
@@ -249,7 +249,7 @@ class EventDate extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the frequencyUntil
      *
-     * @param  DateTime $frequencyUntil
+     * @param  \DateTime $frequencyUntil
      * @return void
      */
     public function setFrequencyUntil($frequencyUntil)
