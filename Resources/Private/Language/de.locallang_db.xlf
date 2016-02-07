@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2016-02-07T15:21:34Z" product-name="qbevents">
+		<header/>
+		<body>
+			<trans-unit id="tx_qbevents_domain_model_event">
+				<source>Event</source>
+				<target>Veranstaltung</target>
+			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_event.title">
+				<source>Title</source>
+				<target>Titel</target>
+			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_event.location">
+				<source>Location</source>
+				<target>Veranstalungsort</target>
+			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_event.teaser">
+				<source>Teaser</source>
+				<target>Teaser</target>
+			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_event.dates">
+				<source>Dates</source>
+				<target>Termine</target>
+			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_event.dates.add">
+				<source>Add date</source>
+				<target>Termin hinzufügen</target>
+			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_eventdate">
+				<source>EventDate</source>
+				<target>Termin</target>
+			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_eventdate.start">
+				<source>Start</source>
+				<target>Start</target>
+			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_eventdate.end">
+				<source>End</source>
+				<target>Ende</target>
+			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_eventdate.is_full_day">
+				<source>Full-Time</source>
+				<target>Ganztägig</target>
+			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_eventdate.frequency">
+				<source>Recurrence</source>
+				<target>Wiederholung</target>
+			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_eventdate.frequency.0">
+				<source>None</source>
+				<target>Keine</target>
+			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_eventdate.frequency.1">
+				<source>Yearly</source>
+				<target>Jährlich</target>
+			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_eventdate.frequency.2">
+				<source>Monthly</source>
+				<target>Monatlich</target>
+			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_eventdate.frequency.3">
+				<source>Weekly</source>
+				<target>Wöchentlich</target>
+			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_eventdate.frequency.4">
+				<source>Daily</source>
+				<target>Täglich</target>
+			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_eventdate.frequency_count">
+				<source>Number of recurrences</source>
+				<target>Anzahl an Wiederholungen</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
