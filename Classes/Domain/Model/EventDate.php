@@ -63,6 +63,13 @@ class EventDate extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $frequencyCount = 0;
 
     /**
+     * frequencyUntil
+     *
+     * @var DateTime
+     */
+    protected $frequencyUntil = null;
+
+    /**
      * Gets hidden
      *
      * @return bool
@@ -227,5 +234,26 @@ class EventDate extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setFrequencyCount($frequencyCount)
     {
         $this->frequencyCount = $frequencyCount;
+    }
+
+    /**
+     * Returns the frequencyUntil
+     *
+     * @return DateTime $frequencyUntil
+     */
+    public function getFrequencyUntil()
+    {
+        return $this->frequencyUntil;
+    }
+
+    /**
+     * Sets the frequencyUntil
+     *
+     * @param  DateTime $frequencyUntil
+     * @return void
+     */
+    public function setFrequencyUntil($frequencyUntil)
+    {
+        $this->frequencyUntil = $frequencyUntil;
     }
 }

@@ -19,24 +19,24 @@ return array(
         'enablecolumns' => array(
             'disabled' => 'hidden',
         ),
-        'searchFields' => 'start,end,is_full_day,frequency,frequency_count',
+        'searchFields' => 'start,end,is_full_day,frequency,frequency_count,frequency_until',
         'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('qbevents') . 'Resources/Public/Icons/tx_qbevents_domain_model_eventdate.svg'
     ),
     'interface' => array(
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, start, end, is_full_day, frequency, frequency_count',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, start, end, is_full_day, frequency, frequency_count, frequency_until',
     ),
     'types' => array(
         '0' => array('showitem' => '--palette--;;date, --palette--;;basic, --palette--;;hidden'),
-        '1' => array('showitem' => '--palette--;;date, --palette--;;basic,--palette--;;recurrence, --palette--;;hidden'),
-        '2' => array('showitem' => '--palette--;;date, --palette--;;basic,--palette--;;recurrence, --palette--;;hidden'),
-        '3' => array('showitem' => '--palette--;;date, --palette--;;basic,--palette--;;recurrence, --palette--;;hidden'),
-        '4' => array('showitem' => '--palette--;;date, --palette--;;basic,--palette--;;recurrence, --palette--;;hidden'),
+        '1' => array('showitem' => '--palette--;;date, --palette--;;basic,--palette--;LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.palette.recurrence;recurrence, --palette--;;hidden'),
+        '2' => array('showitem' => '--palette--;;date, --palette--;;basic,--palette--;LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.palette.recurrence;recurrence, --palette--;;hidden'),
+        '3' => array('showitem' => '--palette--;;date, --palette--;;basic,--palette--;LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.palette.recurrence;recurrence, --palette--;;hidden'),
+        '4' => array('showitem' => '--palette--;;date, --palette--;;basic,--palette--;LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.palette.recurrence;recurrence, --palette--;;hidden'),
     ),
     'palettes' => array(
         '1' => array('showitem' => ''),
         'basic' => array('showitem' => 'frequency, is_full_day', 'canNotCollapse' => 1),
         'date' => array('showitem' => 'start, end', 'canNotCollapse' => 1),
-        'recurrence' => array('showitem' => 'frequency_count', 'canNotCollapse' => 1),
+        'recurrence' => array('showitem' => 'frequency_until, frequency_count', 'canNotCollapse' => 1),
         'hidden' => array('showitem' => 'hidden, sys_language_uid, l10n_parent, l10n_diffsource', 'isHiddenPalette' => true),
     ),
     'columns' => array(
@@ -168,6 +168,17 @@ return array(
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'trim,int'
+            ),
+        ),
+        'frequency_until' => array(
+            'exclude' => 1,
+            'label' => 'LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.frequency_until',
+            'config' => array(
+                'type' => 'input',
+                'size' => 12,
+                'checkbox' => 1,
+                'default' => time(),
+                'eval' => 'datetime'
             ),
         ),
     ),

@@ -69,7 +69,18 @@
 			</trans-unit>
 			<trans-unit id="tx_qbevents_domain_model_eventdate.frequency_count">
 				<source>Number of recurrences</source>
+			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_eventdate.frequency_count">
+				<source>Number of recurrences</source>
 				<target>Anzahl an Wiederholungen</target>
+			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_eventdate.frequency_until">
+				<source>Recurrence ends at</source>
+				<target>Wiederholung endet am</target>
+			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_eventdate.palette.recurrence">
+				<source>Frequency settings (Note: »Recurrence ends at« has higher priority than »Number of recurrences«)</source>
+				<target>Hinweis: Wenn »Wiederholung endet am« gesetzt ist, wird die »Anzahl an Wiederholungen« nicht ausgewerted.</target>
 			</trans-unit>
 		</body>
 	</file>

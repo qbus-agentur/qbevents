@@ -52,7 +52,8 @@ class DataHandlerHooks
                 isset($fields['end']) ||
                 isset($fields['is_full_day']) ||
                 isset($fields['frequency']) ||
-                isset($fields['frequency_count'])
+                isset($fields['frequency_count']) ||
+                isset($fields['frequency_until'])
             )
         );
 

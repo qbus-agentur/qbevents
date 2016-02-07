@@ -18,6 +18,9 @@
 			<trans-unit id="frequency_count.description">
 				<source>frequency_count</source>
 			</trans-unit>
+			<trans-unit id="frequency_until.description">
+				<source>frequency_until</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

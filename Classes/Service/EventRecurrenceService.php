@@ -133,8 +133,13 @@ class EventRecurrenceService implements SingletonInterface
 
             $rrule = [
                 'FREQ' => self::$freqs[$date->getFrequency()],
-                'COUNT' => $date->getFrequencyCount(),
             ];
+
+            if ($date->getFrequencyUntil()) {
+                $rrule['UNTIL'] = $date->getFrequencyUntil()->format(\DateTime::ATOM);
+            } else {
+                $rrule['COUNT'] = $date->getFrequencyCount();
+            }
 
             $rule = new \Recurr\Rule($rrule, $startDate, $endDate);
             $transformer = new \Recurr\Transformer\ArrayTransformer();
