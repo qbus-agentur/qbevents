@@ -37,6 +37,13 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $dates = null;
 
     /**
+     * image
+     *
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     */
+    protected $image = null;
+
+    /**
      * __construct
      */
     public function __construct()
@@ -148,5 +155,26 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setDates($dates)
     {
         $this->dates = $dates;
+    }
+
+    /**
+     * Returns the image
+     *
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Sets the image
+     *
+     * @param  \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
+     * @return void
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
     }
 }

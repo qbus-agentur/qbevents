@@ -15,6 +15,9 @@
 			<trans-unit id="dates.description">
 				<source>dates</source>
 			</trans-unit>
+			<trans-unit id="image.description">
+				<source>image</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
