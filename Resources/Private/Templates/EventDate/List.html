@@ -6,7 +6,7 @@
 			</f:link.action>
 		</h2>
 
-		<time datetime="{date.start->f:format.date(format: 'Y-m-d H:i')}" itemProp="startDate" class="start-date">{date.start->f:format.date(format: 'Y-m-d H:i')}</time>
+		<i class="fa fa-calendar"></i> <time datetime="{date.start->f:format.date(format: 'Y-m-d H:i')}" itemProp="startDate" class="start-date">{date.start->f:format.date(format: 'Y-m-d H:i')}</time>
 		<f:if condition="{date.end}">
 			– <time datetime="{date.end->f:format.date(format: 'Y-m-d H:i')}" itemProp="endDate" class="end-date">{date.end->f:format.date(format: 'Y-m-d H:i')}</time>
 		</f:if>
