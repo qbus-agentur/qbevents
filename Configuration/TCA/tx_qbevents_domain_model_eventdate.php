@@ -177,7 +177,6 @@ return array(
                 'type' => 'input',
                 'size' => 12,
                 'checkbox' => 1,
-                'default' => time(),
                 'eval' => 'datetime'
             ),
         ),
