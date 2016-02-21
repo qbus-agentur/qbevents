@@ -38,4 +38,18 @@ class EventDateRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
         return $query->execute();
     }
+
+    public function findUpcoming()
+    {
+        $query = $this->createQuery();
+
+        $query->matching(
+            $query->logicalAnd(
+                $query->greaterThan('start', new \DateTime('NOW')),
+                $query->equals('frequency', 0)
+            )
+        );
+
+        return $query->execute();
+    }
 }
