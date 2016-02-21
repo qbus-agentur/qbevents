@@ -70,6 +70,13 @@ class EventDate extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $frequencyUntil = null;
 
     /**
+     * frequencyWeekdays
+     *
+     * @var int
+     */
+    protected $frequencyWeekdays = 0;
+
+    /**
      * Gets hidden
      *
      * @return bool
@@ -255,5 +262,26 @@ class EventDate extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setFrequencyUntil($frequencyUntil)
     {
         $this->frequencyUntil = $frequencyUntil;
+    }
+
+    /**
+     * Returns the frequencyWeekdays
+     *
+     * @return int $frequencyWeekdays
+     */
+    public function getFrequencyWeekdays()
+    {
+        return $this->frequencyWeekdays;
+    }
+
+    /**
+     * Sets the frequencyWeekdays
+     *
+     * @param  int $frequencyWeekdays
+     * @return void
+     */
+    public function setFrequencyWeekdays($frequencyWeekdays)
+    {
+        $this->frequencyWeekdays = $frequencyWeekdays;
     }
 }

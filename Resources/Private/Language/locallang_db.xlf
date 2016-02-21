@@ -63,6 +63,30 @@
 			<trans-unit id="tx_qbevents_domain_model_eventdate.palette.recurrence">
 				<source>Frequency settings (Note: »Recurrence ends at« has higher priority than »Number of recurrences«)</source>
 			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_eventdate.frequency_weekdays">
+				<source>Recurrence at</source>
+			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_eventdate.frequency_weekdays.1">
+				<source>Monday</source>
+			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_eventdate.frequency_weekdays.2">
+				<source>Tuesday</source>
+			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_eventdate.frequency_weekdays.3">
+				<source>Wednesday</source>
+			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_eventdate.frequency_weekdays.4">
+				<source>Thursday</source>
+			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_eventdate.frequency_weekdays.5">
+				<source>Friday</source>
+			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_eventdate.frequency_weekdays.6">
+				<source>Saturday</source>
+			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_eventdate.frequency_weekdays.7">
+				<source>Sunday</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

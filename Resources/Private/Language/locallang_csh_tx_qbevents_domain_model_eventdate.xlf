@@ -21,6 +21,9 @@
 			<trans-unit id="frequency_until.description">
 				<source>frequency_until</source>
 			</trans-unit>
+			<trans-unit id="frequency_weekdays.description">
+				<source>frequency_weekdays</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

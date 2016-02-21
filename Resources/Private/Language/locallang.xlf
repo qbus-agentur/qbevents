@@ -42,6 +42,9 @@
 			<trans-unit id="tx_qbevents_domain_model_eventdate.frequency_until">
 				<source>FrequencyUntil</source>
 			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_eventdate.frequency_weekdays">
+				<source>FrequencyWeekdays</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

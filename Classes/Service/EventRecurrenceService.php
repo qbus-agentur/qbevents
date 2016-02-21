@@ -141,6 +141,13 @@ class EventRecurrenceService implements SingletonInterface
                 $rrule['COUNT'] = $date->getFrequencyCount();
             }
 
+            if ($rrule['FREQ'] == 'WEEKLY') {
+                $byday = $this->buildByDay($date->getFrequencyWeekdays());
+                if ($byday) {
+                    $rrule['BYDAY'] = $byday;
+                }
+            }
+
             $rule = new \Recurr\Rule($rrule, $startDate, $endDate);
             $transformer = new \Recurr\Transformer\ArrayTransformer();
 
@@ -235,4 +242,48 @@ class EventRecurrenceService implements SingletonInterface
 
         return $subDate;
     }
+
+    /**
+     * Build a BYDAY string
+     *
+     * e.g. 'MO,TU,FR,SU'
+     *
+     * @param  int
+     * @return string
+     */
+    protected function buildByDay($weekdays)
+    {
+        $days = [];
+
+        if ($weekdays == 0x7F) {
+            // Return empty string, if all days are set.
+            // No need for recurr to parse all those days
+            return '';
+        }
+
+        if (($weekdays & 0x01) == 0x01) {
+            $days[] = 'MO';
+        }
+        if (($weekdays & 0x02) == 0x02) {
+            $days[] = 'TU';
+        }
+        if (($weekdays & 0x04) == 0x04) {
+            $days[] = 'WE';
+        }
+        if (($weekdays & 0x08) == 0x08) {
+            $days[] = 'TH';
+        }
+        if (($weekdays & 0x10) == 0x10) {
+            $days[] = 'FR';
+        }
+        if (($weekdays & 0x20) == 0x20) {
+            $days[] = 'SA';
+        }
+        if (($weekdays & 0x40) == 0x40) {
+            $days[] = 'SU';
+        }
+
+        return implode(',', $days);
+    }
+
 }
