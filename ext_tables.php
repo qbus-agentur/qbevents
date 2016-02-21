@@ -26,6 +26,17 @@ $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['qbevents_eve
     'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/Events.xml'
 );
 
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+    $_EXTKEY,
+    'EventOverview',
+    'Event Overview'
+);
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['qbevents_eventoverview'] = 'pi_flexform';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
+    'qbevents_eventoverview',
+    'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/Overview.xml'
+);
+
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::makeCategorizable(
     $_EXTKEY,
     'tx_qbevents_domain_model_event'
