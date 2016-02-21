@@ -20,3 +20,8 @@ if (!defined('TYPO3_MODE')) {
     'Events',
     'Event System'
 );
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::makeCategorizable(
+    $_EXTKEY,
+    'tx_qbevents_domain_model_event'
+);
