@@ -36,6 +36,10 @@ class EventDateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
         $eventDates = $this->eventDateRepository->findUpcoming();
 
         $this->view->assign('dates', $eventDates);
+        $GLOBALS['TSFE']->addCacheTags([
+            'tx_qbevents_domain_model_event',
+            'tx_qbevents_domain_model_eventdate',
+        ]);
     }
 
     /**
@@ -48,5 +52,9 @@ class EventDateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
     public function showAction(EventDate $date)
     {
         $this->view->assign('date', $date);
+        $GLOBALS['TSFE']->addCacheTags([
+            'tx_qbevents_domain_model_event',
+            'tx_qbevents_domain_model_eventdate',
+        ]);
     }
 }
