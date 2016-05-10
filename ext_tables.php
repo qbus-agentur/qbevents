@@ -25,3 +25,6 @@ if (!defined('TYPO3_MODE')) {
     $_EXTKEY,
     'tx_qbevents_domain_model_event'
 );
+
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'qbevents');
