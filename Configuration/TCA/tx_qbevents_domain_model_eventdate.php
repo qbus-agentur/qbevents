@@ -20,7 +20,7 @@ return array(
             'disabled' => 'hidden',
         ),
         'searchFields' => 'start,end,is_full_day,frequency,frequency_count,frequency_until',
-        'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('qbevents') . 'Resources/Public/Icons/tx_qbevents_domain_model_eventdate.svg'
+        'iconfile' => 'EXT:qbevents/Resources/Public/Icons/tx_qbevents_domain_model_eventdate.svg'
     ),
     'interface' => array(
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, start, end, is_full_day, frequency, frequency_count, frequency_until, frequency_weekdays',
