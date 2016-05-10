@@ -10,9 +10,7 @@
 		</figure>
 	</f:if>
 
-	<time datetime="{date.start->f:format.date(format: 'Y-m-d H:i')}" itemProp="startDate" class="start-date">{date.start->f:format.date()}</time>
-	<f:if condition="{date.end}">
-		– <time datetime="{date.end->f:format.date(format: 'Y-m-d H:i')}" itemProp="endDate" class="end-date">{date.end->f:format.date()}</time>
+	<time datetime="{date.start->f:format.date(format: 'Y-m-d H:i')}" itemProp="startDate" class="start-date">{date.start->f:format.date()}</time><f:if condition="{date.end}"> – <time datetime="{date.end->f:format.date(format: 'Y-m-d H:i')}" itemProp="endDate" class="end-date">{date.end->f:format.date()}</time>
 	</f:if>
 
 	<f:if condition="{date.event.location}">
