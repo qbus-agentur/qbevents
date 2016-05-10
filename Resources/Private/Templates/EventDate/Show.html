@@ -2,7 +2,12 @@
 	<h2 itemprop="name">{date.event.title}</h2>
 
 	<f:if condition="{date.event.image}">
-		<f:image image="{date.event.image}" class="img-responsive" additionalAttributes="{itemProp: 'image'}"/>
+		<figure>
+			<f:image image="{date.event.image}" class="img-responsive" additionalAttributes="{itemProp: 'image'}"/>
+			<f:if condition="{date.event.image.description}">
+				<figcaption>{date.event.image.description}</figcaption>
+			</f:if>
+		</figure>
 	</f:if>
 
 	<time datetime="{date.start->f:format.date(format: 'Y-m-d H:i')}" itemProp="startDate" class="start-date">{date.start->f:format.date()}</time>
