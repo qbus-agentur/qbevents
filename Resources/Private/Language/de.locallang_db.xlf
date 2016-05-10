@@ -13,7 +13,7 @@
 			</trans-unit>
 			<trans-unit id="tx_qbevents_domain_model_event.location">
 				<source>Location</source>
-				<target>Veranstalungsort</target>
+				<target>Veranstaltungsort</target>
 			</trans-unit>
 			<trans-unit id="tx_qbevents_domain_model_event.teaser">
 				<source>Teaser</source>
