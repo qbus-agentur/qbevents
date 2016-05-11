@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2016-02-08T20:09:00Z" product-name="qbevents">
+		<header/>
+		<body>
+			<trans-unit id="qbevents.title">
+				<source>Event System</source>
+			</trans-unit>
+			<trans-unit id="qbevents.description">
+				<source>Event management.</source>
+			</trans-unit>
+			<trans-unit id="qbevents.flexform.sheetSettings">
+				<source>Settings</source>
+			</trans-unit>
+			<trans-unit id="qbevents.flexform.mode">
+				<source>Mode</source>
+			</trans-unit>
+			<trans-unit id="qbevents.flexform.mode.eventlist">
+				<source>Event List</source>
+			</trans-unit>
+			<trans-unit id="qbevents.flexform.mode.upcoming">
+				<source>Date List</source>
+			</trans-unit>
+			<trans-unit id="qbevents.flexform.record">
+				<source>Select event</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

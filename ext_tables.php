@@ -20,6 +20,11 @@ if (!defined('TYPO3_MODE')) {
     'Events',
     'Event System'
 );
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['qbevents_events'] = 'pi_flexform';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
+    'qbevents_events',
+    'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/Events.xml'
+);
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::makeCategorizable(
     $_EXTKEY,

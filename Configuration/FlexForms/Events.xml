@@ -1,0 +1,193 @@
+<T3DataStructure>
+	<meta>
+		<langDisable>1</langDisable>
+	</meta>
+	<sheets>
+		<sDEF>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>LLL:EXT:qbevents/Resources/Private/Language/locallang_be.xlf:qbevents.flexform.sheetSettings</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<switchableControllerActions>
+						<TCEforms>
+							<label>LLL:EXT:qbevents/Resources/Private/Language/locallang_be.xlf:qbevents.flexform.mode</label>
+							<onChange>reload</onChange>
+							<config>
+								<type>select</type>
+								<items>
+									<numIndex index="1">
+										<numIndex index="0">LLL:EXT:qbevents/Resources/Private/Language/locallang_be.xlf:qbevents.flexform.mode.eventlist</numIndex>
+										<numIndex index="1">EventDate->list;EventDate->show</numIndex>
+									</numIndex>
+								</items>
+							</config>
+						</TCEforms>
+					</switchableControllerActions>
+					<settings.template>
+						<TCEforms>
+							<label>Template (EXT:your_extension/..../Foo.html)</label>
+							<config>
+								<type>input</type>
+								<size>30</size>
+								<eval>trim</eval>
+							</config>
+						</TCEforms>
+					</settings.template>
+					<settings.demands_limit>
+						<TCEforms>
+							<label>Limit</label>
+							<config>
+								<type>input</type>
+								<size>30</size>
+								<eval>trim</eval>
+							</config>
+						</TCEforms>
+					</settings.demands_limit>
+					<settings.demands>
+						<title>Demands</title>
+						<section>1</section>
+						<type>array</type>
+						<el>
+							<demand>
+								<type>array</type>
+								<title>Demand</title>
+								<el>
+									<operation>
+										<TCEforms>
+											<label>Operation</label>
+											<config>
+												<type>select</type>
+												<items type="array">
+													<numIndex index="0" type="array">
+														<numIndex index="0">Equals</numIndex>
+														<numIndex index="1">EQUALS</numIndex>
+													</numIndex>
+													<numIndex index="1" type="array">
+														<numIndex index="0">Less than</numIndex>
+														<numIndex index="1">LESSTHAN</numIndex>
+													</numIndex>
+													<numIndex index="2" type="array">
+														<numIndex index="0">less than or equal</numIndex>
+														<numIndex index="1">LESSTHANOREQUAL</numIndex>
+													</numIndex>
+													<numIndex index="3" type="array">
+														<numIndex index="0">Greater than</numIndex>
+														<numIndex index="1">GREATERTHAN</numIndex>
+													</numIndex>
+													<numIndex index="4" type="array">
+														<numIndex index="0">greater than or equal</numIndex>
+														<numIndex index="1">GREATERTHANOREQUAL</numIndex>
+													</numIndex>
+													<numIndex index="5" type="array">
+														<numIndex index="0">Is like (placeholders % an .)</numIndex>
+														<numIndex index="1">LIKE</numIndex>
+													</numIndex>
+													<numIndex index="6" type="array">
+														<numIndex index="0">Contains (for 1:n relationships)</numIndex>
+														<numIndex index="1">CONTAINS</numIndex>
+													</numIndex>
+												</items>
+											</config>
+										</TCEforms>
+									</operation>
+									<property>
+										<TCEforms>
+											<label>Property</label>
+											<config>
+												<type>select</type>
+												<items type="array">
+													<numIndex index="0" type="array">
+														<numIndex index="0">Categories</numIndex>
+														<numIndex index="1">event.categories</numIndex>
+													</numIndex>
+													<numIndex index="1" type="array">
+														<numIndex index="0">Event UID</numIndex>
+														<numIndex index="1">event.uid</numIndex>
+													</numIndex>
+													<numIndex index="2" type="array">
+														<numIndex index="0">Event PID</numIndex>
+														<numIndex index="1">event.pid</numIndex>
+													</numIndex>
+													<numIndex index="3" type="array">
+														<numIndex index="0">Title</numIndex>
+														<numIndex index="1">event.title</numIndex>
+													</numIndex>
+													<numIndex index="4" type="array">
+														<numIndex index="0">Location</numIndex>
+														<numIndex index="1">event.location</numIndex>
+													</numIndex>
+													<numIndex index="5" type="array">
+														<numIndex index="0">Teaser</numIndex>
+														<numIndex index="1">event.teaser</numIndex>
+													</numIndex>
+													<numIndex index="6" type="array">
+														<numIndex index="0">Start</numIndex>
+														<numIndex index="1">start</numIndex>
+													</numIndex>
+													<numIndex index="7" type="array">
+														<numIndex index="0">End</numIndex>
+														<numIndex index="1">end</numIndex>
+													</numIndex>
+													<numIndex index="8" type="array">
+														<numIndex index="0">Is Full Day</numIndex>
+														<numIndex index="1">isFullDayL</numIndex>
+													</numIndex>
+													<numIndex index="9" type="array">
+														<numIndex index="0">Frequency</numIndex>
+														<numIndex index="1">frequency</numIndex>
+													</numIndex>
+													<numIndex index="10" type="array">
+														<numIndex index="0">Frequency Count</numIndex>
+														<numIndex index="1">frequencyCount</numIndex>
+													</numIndex>
+													<numIndex index="11" type="array">
+														<numIndex index="0">Frequency Until</numIndex>
+														<numIndex index="1">frequencyUntil</numIndex>
+													</numIndex>
+													<numIndex index="12" type="array">
+														<numIndex index="0">Frequency Weekdays</numIndex>
+														<numIndex index="1">frequencyWeekdays</numIndex>
+													</numIndex>
+												</items>
+											</config>
+										</TCEforms>
+									</property>
+									<value>
+										<TCEforms>
+											<label>Value</label>
+											<config>
+												<type>input</type>
+												<size>30</size>
+												<eval>trim,required</eval>
+											</config>
+										</TCEforms>
+									</value>
+								</el>
+							</demand>
+						</el>
+					</settings.demands>
+					<settings.demands_are_base>
+						<TCEforms>
+							<label>Demands can be extended by GET/POST</label>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</settings.demands_are_base>
+					<settings.events_per_page>
+						<TCEforms>
+							<label>Events per Page</label>
+							<config>
+								<type>input</type>
+								<size>30</size>
+								<eval>trim,int</eval>
+							</config>
+						</TCEforms>
+					</settings.events_per_page>
+				</el>
+			</ROOT>
+		</sDEF>
+	</sheets>
+</T3DataStructure>
