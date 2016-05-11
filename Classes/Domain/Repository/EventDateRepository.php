@@ -16,7 +16,7 @@ class EventDateRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         'start' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
     ];
 
-    /*
+    /**
      * @param int        $uid
      * @param array|NULL $enableFieldsToBeIgnored
      *
