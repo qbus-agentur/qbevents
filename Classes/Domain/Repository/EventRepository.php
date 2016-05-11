@@ -20,12 +20,13 @@ class EventRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     {
         $query = $this->createQuery();
 
-        $constraints = DemandsUtility::getConstraintsForDemand($query, $demands);
-
         if ($limit) {
             $query->setLimit((int) $limit);
         }
-        $query->matching($constraints);
+        $constraints = DemandsUtility::getConstraintsForDemand($query, $demands);
+        if ($constraints !== null) {
+            $query->matching($constraints);
+        }
 
         return $query->execute();
     }
