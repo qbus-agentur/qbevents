@@ -21,6 +21,10 @@
 										<numIndex index="0">LLL:EXT:qbevents/Resources/Private/Language/locallang_be.xlf:qbevents.flexform.mode.eventlist</numIndex>
 										<numIndex index="1">EventDate->list;EventDate->show</numIndex>
 									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">LLL:EXT:qbevents/Resources/Private/Language/locallang_be.xlf:qbevents.flexform.mode.teaser</numIndex>
+										<numIndex index="1">EventDate->teaser</numIndex>
+									</numIndex>
 								</items>
 							</config>
 						</TCEforms>

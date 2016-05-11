@@ -103,4 +103,39 @@ class EventDateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
             'tx_qbevents_domain_model_eventdate',
         ]);
     }
+
+    /**
+     * teaser
+     */
+    public function teaserAction()
+    {
+        $demands = array();
+
+        if (isset($this->settings['demands']) && is_array($this->settings['demands']) && count($this->settings['demands']) > 0) {
+            $demands = $this->settings['demands'];
+        }
+
+        $dates = $this->eventDateRepository->findUpcoming($demands, 1);
+
+        $date = null;
+        if ($dates instanceof \TYPO3\CMS\Extbase\Persistence\QueryResultInterface) {
+            $date = $dates->getFirst();
+        } elseif (is_array($dates)) {
+            $date = isset($dates[0]) ? $dates[0] : null;
+        }
+
+        $variables = [
+            /* Heads UP! $date may be null */
+            'date' => $date,
+            'contentObject' => $this->configurationManager->getContentObject()->data,
+            'extended' => [],
+        ];
+        $variables = $this->signalSlotDispatcher->dispatch(__CLASS__, 'teaserAction_variables', $variables);
+        $this->view->assignMultiple($variables);
+
+        $GLOBALS['TSFE']->addCacheTags(array(
+            'tx_qbevents_domain_model_event',
+            'tx_qbevents_domain_model_eventdate',
+        ));
+    }
 }

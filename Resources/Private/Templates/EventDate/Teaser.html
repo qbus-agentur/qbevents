@@ -1,0 +1,7 @@
+<f:if condition="{date}">
+	<f:then>
+		<f:format.date format="%a %H:%M">{date.start}</f:format.date> Uhr
+		<p>{date.event.title}</p>
+	</f:then>
+	<f:else>No event found.</f:else>
+</f:if>
