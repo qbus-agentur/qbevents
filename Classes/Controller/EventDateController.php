@@ -29,13 +29,53 @@ class EventDateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
     /**
      * list
      *
+     * @param array $demands
      * @return void
      */
-    public function listAction()
+    public function listAction($demands = NULL)
     {
-        $eventDates = $this->eventDateRepository->findUpcoming();
+        $signalArguments = $this->signalSlotDispatcher->dispatch(__CLASS__, 'listAction_pre', array(
+            'demands'  => $demands,
+            'settings' => $this->settings,
+        ));
+        $demands        = $signalArguments['demands'];
+        $this->settings = $signalArguments['settings'];
 
-        $this->view->assign('dates', $eventDates);
+        if (!$demands) {
+            $demands = [];
+        }
+        $eventDemands = array();
+
+        if (isset($this->settings['demands']) && is_array($this->settings['demands']) && count($this->settings['demands']) > 0) {
+            $eventDemands = $this->settings['demands'];
+        }
+
+        $signalArguments = $this->signalSlotDispatcher->dispatch(__CLASS__, 'listAction_demands', array(
+            'demands'      => $demands,
+            'eventDemands' => $eventDemands,
+            'settings'     => $this->settings,
+        ));
+        $demands        = $signalArguments['demands'];
+        $eventDemands   = $signalArguments['eventDemands'];
+        $this->settings = $signalArguments['settings'];
+
+        $limit = isset($this->settings['demands_limit']) ? $this->settings['demands_limit'] : 0;
+
+        $dates = $this->eventDateRepository->findUpcoming($eventDemands, $limit);
+
+        $variables = [
+            'dates' => $dates,
+            'demands' => $demands,
+            'extended' => [],
+        ];
+        $variables = $this->signalSlotDispatcher->dispatch(__CLASS__, 'listAction_variables', $variables);
+
+        $this->view->assignMultiple($variables);
+
+        if (isset($this->settings['template']) && $this->settings['template']) {
+            $this->view->setTemplatePathAndFilename($this->settings['template']);
+        }
+
         $GLOBALS['TSFE']->addCacheTags([
             'tx_qbevents_domain_model_event',
             'tx_qbevents_domain_model_eventdate',
