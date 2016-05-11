@@ -19,6 +19,8 @@
 			<span class="location" itemProp="location">{date.event.location}</span>
 		</f:if>
 
+		<f:render section="categories" arguments="{_all}" />
+
 		<f:if condition="{date.event.teaser}">
 			<div class="description" itemProp="description">
 				<f:format.html>{date.event.teaser}</f:format.html>
@@ -26,3 +28,9 @@
 		</f:if>
 	</div>
 </f:for>
+
+<f:section name="categories">
+	<f:for each="{date.event.categories}" as="category">
+		<span class="label label-info">{category.title}</span>
+	</f:for>
+</f:section>
