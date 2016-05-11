@@ -51,7 +51,13 @@ class EventDateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
      */
     public function showAction(EventDate $date)
     {
-        $this->view->assign('date', $date);
+        $variables = [
+            'date' => $date,
+            'extended' => [],
+        ];
+        $variables = $this->signalSlotDispatcher->dispatch(__CLASS__, 'showAction_variables', $variables);
+        $this->view->assignMultiple($variables);
+
         $GLOBALS['TSFE']->addCacheTags([
             'tx_qbevents_domain_model_event',
             'tx_qbevents_domain_model_eventdate',
