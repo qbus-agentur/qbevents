@@ -1,3 +1,26 @@
+<div class="qbevents-list">
+	<f:if condition="{dates}">
+		<f:then>
+			<span class="results-found">{dates->f:count()} Events</span>
+		</f:then>
+		<f:else>
+			<span class="no-results">No Events found.</span>
+		</f:else>
+	</f:if>
+
+	<f:if condition="{settings.events_per_page}">
+		<f:then>
+			<f:widget.paginate objects="{dates}" as="paginatedDates" configuration="{itemsPerPage: settings.events_per_page, insertAbove: 1, insertBelow: 1}">
+				<f:render section="list" arguments="{dates: paginatedDates}"/>
+			</f:widget.paginate>
+		</f:then>
+		<f:else>
+			<f:render section="list" arguments="{dates: dates}"/>
+		</f:else>
+	</f:if>
+</div>
+
+<f:section name="list">
 <f:for each="{dates}" as="date">
 	<div itemscope itemtype="http://schema.org/Event" class="event">
 		<h2>
@@ -28,6 +51,7 @@
 		</f:if>
 	</div>
 </f:for>
+</f:section>
 
 <f:section name="categories">
 	<f:for each="{date.event.categories}" as="category">
