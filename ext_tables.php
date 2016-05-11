@@ -42,5 +42,4 @@ $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['qbevents_eve
     'tx_qbevents_domain_model_event'
 );
 
-
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'qbevents');

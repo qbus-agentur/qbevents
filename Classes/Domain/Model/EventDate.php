@@ -277,7 +277,7 @@ class EventDate extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the frequencyWeekdays
      *
-     * @param  int $frequencyWeekdays
+     * @param  int  $frequencyWeekdays
      * @return void
      */
     public function setFrequencyWeekdays($frequencyWeekdays)

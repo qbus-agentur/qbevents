@@ -285,5 +285,4 @@ class EventRecurrenceService implements SingletonInterface
 
         return implode(',', $days);
     }
-
 }

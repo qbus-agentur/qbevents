@@ -36,6 +36,7 @@ class DataHandlerHooks
 
         if ($status === 'update' && isset($fields['hidden']) && $fields['hidden']) {
             $this->getEventRecurrenceService()->hideRecurrences($id);
+
             return;
         }
 

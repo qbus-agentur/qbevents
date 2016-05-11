@@ -11,7 +11,6 @@ use TYPO3\CMS\Extbase\Persistence\QueryInterface;
  */
 class DemandsUtility
 {
-
     /**
      * Get a QueryInterface constraint from an array definition
      *
@@ -30,8 +29,9 @@ class DemandsUtility
         }
 
         foreach ($demands as $key => $demand) {
-            if (!isset($demand['demand']))
+            if (!isset($demand['demand'])) {
                 continue;
+            }
             $constraint = $demand['demand'];
 
             switch ($constraint['operation']) {
@@ -68,7 +68,7 @@ class DemandsUtility
         }
 
         $result = null;
-        switch ($conjunction)  {
+        switch ($conjunction) {
         case 'AND':
             $result = $query->logicalAnd($constraints);
             break;
@@ -79,7 +79,4 @@ class DemandsUtility
 
         return $result;
     }
-
-
-
 }

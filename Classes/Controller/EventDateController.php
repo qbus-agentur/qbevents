@@ -29,10 +29,10 @@ class EventDateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
     /**
      * list
      *
-     * @param array $demands
+     * @param  array $demands
      * @return void
      */
-    public function listAction($demands = NULL)
+    public function listAction($demands = null)
     {
         $signalArguments = $this->signalSlotDispatcher->dispatch(__CLASS__, 'listAction_pre', array(
             'demands'  => $demands,

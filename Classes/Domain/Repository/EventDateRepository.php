@@ -1,7 +1,6 @@
 <?php
 namespace Qbus\Qbevents\Domain\Repository;
 
-use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use Qbus\Qbevents\Utility\DemandsUtility;
 
 /**
@@ -41,7 +40,6 @@ class EventDateRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
         return $query->execute();
     }
-
 
     public function findUpcoming($demands, $limit)
     {

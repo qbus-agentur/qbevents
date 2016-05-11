@@ -1,8 +1,6 @@
 <?php
 namespace Qbus\Qbevents\Controller;
 
-use Qbus\Qbevents\Domain\Model\EventDate;
-use Qbus\Qbevents\Domain\Repository\EventDateRepository;
 use Qbus\Qbevents\Domain\Repository\EventRepository;
 
 /**
