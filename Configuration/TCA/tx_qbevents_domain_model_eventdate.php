@@ -121,7 +121,8 @@ return array(
         ),
         'event' => array(
             'config' => array(
-                'type' => 'passthrough',
+                'type' => 'select',
+                'foreign_table' => 'tx_qbevents_domain_model_event',
             ),
         ),
         'type' => array(
