@@ -2,6 +2,7 @@
 namespace Qbus\Qbevents\Domain\Repository;
 
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use Qbus\Qbevents\Utility\DemandsUtility;
 
 /**
  * EventDateRepository
@@ -51,7 +52,7 @@ class EventDateRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             $query->equals('frequency', 0),
         );
 
-        $additional = $this->getConstraintsForDemand($query, $demands);
+        $additional = DemandsUtility::getConstraintsForDemand($query, $demands);
         if ($additional !== null) {
             $constraints[] = $additional;
         }
@@ -63,73 +64,5 @@ class EventDateRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         }
 
         return $query->execute();
-    }
-
-    /**
-     * Get a QueryInterface constraint from an array definition
-     *
-     * @param QueryInterface $query
-     * @param array          $demands
-     * @param string         $conjunction
-     *
-     * @return void
-     */
-    protected function getConstraintsForDemand($query, $demands, $conjunction = 'AND')
-    {
-        $constraints = array();
-
-        if (!is_array($demands) || empty($demands)) {
-            return null;
-        }
-
-        foreach ($demands as $key => $demand) {
-            if (!isset($demand['demand']))
-                continue;
-            $constraint = $demand['demand'];
-
-            switch ($constraint['operation']) {
-            case 'EQUALS':
-                $constraints[] = $query->equals($constraint['property'], $constraint['value']);
-                break;
-            case 'LIKE':
-                $constraints[] = $query->like($constraint['property'], $constraint['value']);
-                break;
-            case 'CONTAINS':
-                $constraints[] = $query->contains($constraint['property'], $constraint['value']);
-                break;
-            case 'LESSTHAN':
-                $constraints[] = $query->lessThan($constraint['property'], $constraint['value']);
-                break;
-            case 'LESSTHANOREQUAL':
-                $constraints[] = $query->lessThanOrEqual($constraint['property'], $constraint['value']);
-                break;
-            case 'GREATERTHAN':
-                $constraints[] = $query->greaterThan($constraint['property'], $constraint['value']);
-                break;
-            case 'GREATERTHANOREQUAL':
-                $constraints[] = $query->greaterThanOrEqual($constraint['property'], $constraint['value']);
-                break;
-            case 'AND':
-                $constraints[] = $this->getConstraintsForDemand($query, $constraint['operands'], 'AND');
-                break;
-            case 'OR':
-                $constraints[] = $this->getConstraintsForDemand($query, $constraint['operands'], 'OR');
-                break;
-            default:
-                return null;
-            }
-        }
-
-        $result = null;
-        switch ($conjunction)  {
-        case 'AND':
-            $result = $query->logicalAnd($constraints);
-            break;
-        case 'OR':
-            $result = $query->logicalOr($constraints);
-            break;
-        }
-
-        return $result;
     }
 }
