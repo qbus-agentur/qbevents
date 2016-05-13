@@ -14,6 +14,27 @@ class DataHandlerHooks
     const EVENTDATE_TABLE = 'tx_qbevents_domain_model_eventdate';
 
     /**
+     * Array that holds deferred id's deferred to be processed after all operations
+     *
+     * @var array
+     */
+    static protected $deferred = array();
+
+    /**
+     * @param  DataHandler $dataHandler
+     * @return void
+     */
+    public function processDatamap_afterAllOperations(DataHandler $dataHandler)
+    {
+        if (count(self::$deferred) > 0) {
+            foreach (self::$deferred as $uid) {
+                $this->getEventRecurrenceService()->updateRecurrences($uid);
+            }
+        }
+        self:$deferred = array();
+    }
+
+    /**
      * Hook executed after the DataHandler performed one database operation
      *
      * @param  string      $status
@@ -34,6 +55,17 @@ class DataHandlerHooks
             return;
         }
 
+        /* Defer new records to the "afterAllOperations" state, since the
+           "event" pointer is not filled in "afterDatabaseOperations" state.
+           Background: the event pointer is by the RelationHandler during
+           the DataHandlers remapStack phase */
+        if ($status === 'new') {
+            $id = $dataHandler->substNEWwithIDs[$id];
+            self::$deferred[] = $id;
+            return;
+
+        }
+
         if ($status === 'update' && isset($fields['hidden']) && $fields['hidden']) {
             $this->getEventRecurrenceService()->hideRecurrences($id);
 
@@ -45,7 +77,6 @@ class DataHandlerHooks
         }
 
         $change = (
-            $status === 'new' ||
             $status === 'update' && (
                 isset($fields['hidden']) ||
                 isset($fields['type']) ||
@@ -60,9 +91,6 @@ class DataHandlerHooks
         );
 
         if ($change) {
-            if ($status === 'new') {
-                $id = $dataHandler->substNEWwithIDs[$id];
-            }
             $this->getEventRecurrenceService()->updateRecurrences($id);
         }
     }
