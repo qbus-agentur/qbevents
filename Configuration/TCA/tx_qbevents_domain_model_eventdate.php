@@ -12,9 +12,6 @@ return array(
         'dividers2tabs' => true,
         'versioningWS' => 2,
         'versioning_followPages' => true,
-        'languageField' => 'sys_language_uid',
-        'transOrigPointerField' => 'l10n_parent',
-        'transOrigDiffSourceField' => 'l10n_diffsource',
         'delete' => 'deleted',
         'enablecolumns' => array(
             'disabled' => 'hidden',
@@ -23,7 +20,7 @@ return array(
         'iconfile' => 'EXT:qbevents/Resources/Public/Icons/tx_qbevents_domain_model_eventdate.svg'
     ),
     'interface' => array(
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, start, end, is_full_day, frequency, frequency_count, frequency_until, frequency_weekdays',
+        'showRecordFieldList' => 'hidden, start, end, is_full_day, frequency, frequency_count, frequency_until, frequency_weekdays',
     ),
     'types' => array(
         '0' => array('showitem' => '--palette--;;date, --palette--;;basic, --palette--;;hidden'),
@@ -38,42 +35,9 @@ return array(
         'date' => array('showitem' => 'start, end', 'canNotCollapse' => 1),
         'recurrence' => array('showitem' => 'frequency_until, frequency_count', 'canNotCollapse' => 1),
         'weekly' => array('showitem' => 'frequency_weekdays', 'canNotCollapse' => 1),
-        'hidden' => array('showitem' => 'hidden, sys_language_uid, l10n_parent, l10n_diffsource', 'isHiddenPalette' => true),
+        'hidden' => array('showitem' => 'hidden', 'isHiddenPalette' => true),
     ),
     'columns' => array(
-        'sys_language_uid' => array(
-            'exclude' => 1,
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.language',
-            'config' => array(
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'foreign_table' => 'sys_language',
-                'foreign_table_where' => 'ORDER BY sys_language.title',
-                'items' => array(
-                    array('LLL:EXT:lang/locallang_general.xlf:LGL.allLanguages', -1),
-                    array('LLL:EXT:lang/locallang_general.xlf:LGL.default_value', 0)
-                ),
-            ),
-        ),
-        'l10n_parent' => array(
-            'displayCond' => 'FIELD:sys_language_uid:>:0',
-            'exclude' => 1,
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.l18n_parent',
-            'config' => array(
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'items' => array(
-                    array('', 0),
-                ),
-                'foreign_table' => 'tx_qbevents_domain_model_eventdate',
-                'foreign_table_where' => 'AND tx_qbevents_domain_model_eventdate.pid=###CURRENT_PID### AND tx_qbevents_domain_model_eventdate.sys_language_uid IN (-1,0)',
-            ),
-        ),
-        'l10n_diffsource' => array(
-            'config' => array(
-                'type' => 'passthrough',
-            ),
-        ),
         't3ver_label' => array(
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.versionLabel',
             'config' => array(
