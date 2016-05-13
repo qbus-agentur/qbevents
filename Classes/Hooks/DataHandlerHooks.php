@@ -67,26 +67,6 @@ class DataHandlerHooks
         }
     }
 
-    /*
-     * @param string      $table
-     * @param int         $id
-     * @param bool        $recordWasDeleted
-     * @param DataHandler $dataHandler
-     */
-    public function processCmdmap_deleteAction(
-        $table,
-        $id,
-        array $record,
-        &$recordWasDeleted,
-        DataHandler $dataHandler
-    ) {
-        if ($table !== self::EVENTDATE_TABLE) {
-            return;
-        }
-
-        $this->getEventRecurrenceService()->removeRecurrences($id);
-    }
-
     /**
      * @return \Qbus\Qbevents\Service\EventRecurrenceService
      */

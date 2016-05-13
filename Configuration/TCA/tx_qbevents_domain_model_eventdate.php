@@ -200,5 +200,24 @@ return array(
                 )
             ),
         ),
+        'recurrences' => array(
+            'exclude' => 1,
+            'label' => 'LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_event.dates',
+            'config' => array(
+                'type' => 'inline',
+                'foreign_table' => 'tx_qbevents_domain_model_eventdate',
+                'foreign_field' => 'base_date',
+                'maxitems' => 9999,
+                'appearance' => [
+                    'newRecordLinkTitle' => 'LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_event.dates.add',
+                    'collapseAll' => 0,
+                    'levelLinksPosition' => 'top',
+                    'showSynchronizationLink' => 1,
+                    'showPossibleLocalizationRecords' => 1,
+                    'showAllLocalizationLink' => 1
+                ],
+                'eval' => ''
+            ),
+        ),
     ),
 );

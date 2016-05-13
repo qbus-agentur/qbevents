@@ -92,18 +92,6 @@ class EventRecurrenceService implements SingletonInterface
     /**
      * @param int $eventDateUid
      */
-    public function removeRecurrences($eventDateUid)
-    {
-        $dates = $this->eventDateRepository->findRecurrencesByUid($eventDateUid);
-        foreach ($dates as $date) {
-            $this->eventDateRepository->remove($date);
-        }
-        $this->persistenceManager->persistAll();
-    }
-
-    /**
-     * @param int $eventDateUid
-     */
     public function updateRecurrences($eventDateUid)
     {
         $date = $this->eventDateRepository->findByUid($eventDateUid);
