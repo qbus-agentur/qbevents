@@ -89,6 +89,15 @@ class EventRecurrenceService implements SingletonInterface
         $this->persistenceManager->persistAll();
     }
 
+    public function removeRecurrences($eventDateUid)
+    {
+        $dates = $this->eventDateRepository->findRecurrencesByUid($eventDateUid);
+        foreach ($dates as $date) {
+            $this->eventDateRepository->remove($date);
+        }
+        $this->persistenceManager->persistAll();
+    }
+
     /**
      * @param int $eventDateUid
      */
@@ -100,6 +109,8 @@ class EventRecurrenceService implements SingletonInterface
             return;
         }
         if ($date->getFrequency() === 0) {
+            /* Remove recurrences that may have existed before switching to frequency=0 */
+            $this->removeRecurrences($eventDateUid);
             return;
         }
 
