@@ -19,6 +19,8 @@ return array(
             'endtime' => 'endtime',
         ),
         'searchFields' => 'title,location,teaser,description,dates,image',
+        /* FIXME: This will not work reliably for workspaces (will take all workspaces and the live db into account) */
+        'default_sortby' => 'ORDER BY (select MIN(start) from tx_qbevents_domain_model_eventdate where tx_qbevents_domain_model_eventdate.event = tx_qbevents_domain_model_event.uid and tx_qbevents_domain_model_eventdate.deleted = 0 and tx_qbevents_domain_model_eventdate.hidden = 0) ASC',
         'iconfile' => 'EXT:qbevents/Resources/Public/Icons/tx_qbevents_domain_model_event.svg'
     ),
     'interface' => array(
