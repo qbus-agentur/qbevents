@@ -17,9 +17,10 @@
 		<span class="location" itemProp="location">{date.event.location}</span>
 	</f:if>
 
-	<f:if condition="{date.event.teaser}">
+	<f:if condition="{date.event.teaser}{date.event.description}">
 		<div class="description" itemProp="description">
 			<f:format.html>{date.event.teaser}</f:format.html>
+			<f:format.html>{date.event.description}</f:format.html>
 		</div>
 	</f:if>
 </div>
