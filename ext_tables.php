@@ -36,5 +36,3 @@ $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['qbevents_eve
     'qbevents_eventoverview',
     'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/Overview.xml'
 );
-
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'qbevents');
