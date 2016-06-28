@@ -41,7 +41,7 @@ class EventDateRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         return $query->execute();
     }
 
-    public function findUpcoming($demands = array(), $limit = 0)
+    public function findUpcoming($demands = array(), $limit = 0, $returnRawQueryResult = false)
     {
         $query = $this->createQuery();
 
@@ -61,6 +61,6 @@ class EventDateRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             $query->setLimit((int) $limit);
         }
 
-        return $query->execute();
+        return $query->execute($returnRawQueryResult);
     }
 }
