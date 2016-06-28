@@ -34,6 +34,8 @@ class EventDateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
      */
     public function listAction($demands = null)
     {
+        $this->redirectIfPost(['demands' => $demands]);
+
         $signalArguments = $this->signalSlotDispatcher->dispatch(__CLASS__, 'listAction_pre', array(
             'demands'  => $demands,
             'settings' => $this->settings,
@@ -137,5 +139,16 @@ class EventDateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
             'tx_qbevents_domain_model_event',
             'tx_qbevents_domain_model_eventdate',
         ));
+    }
+
+    protected function redirectIfPost($arguments = array(), $action = null)
+    {
+        if ($this->request->getMethod() === 'POST') {
+            $uri = $this->uriBuilder->reset()->setUseCacheHash(false)->uriFor($action, $arguments, null, null, null);
+
+            header('HTTP/1.1 303 See Other');
+            header("Location: $uri");
+            exit;
+        }
     }
 }
