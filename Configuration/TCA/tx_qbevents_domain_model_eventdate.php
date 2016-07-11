@@ -86,6 +86,7 @@ return array(
         'event' => array(
             'config' => array(
                 'type' => 'select',
+                'renderType' => 'selectSingle',
                 'foreign_table' => 'tx_qbevents_domain_model_event',
             ),
         ),
