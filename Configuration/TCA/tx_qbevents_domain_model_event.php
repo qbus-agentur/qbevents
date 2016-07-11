@@ -27,7 +27,7 @@ return array(
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, location, teaser, description, image dates',
     ),
     'types' => array(
-        '1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title, location, teaser, description, image, dates, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+        '1' => array('showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, --palette--;;1, title, location, teaser, description, image, dates, --div--;' . (version_compare(TYPO3_branch, '7.4', '>=') ? 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf' : 'LLL:EXT:cms/locallang_ttc.xlf') . ':tabs.access, starttime, endtime'),
     ),
     'palettes' => array(
         '1' => array('showitem' => ''),
@@ -160,7 +160,7 @@ return array(
                 'image',
                 array(
                     'appearance' => array(
-                        'createNewRelationLinkTitle' => 'LLL:EXT:cms/locallang_ttc.xlf:images.addFileReference'
+                        'createNewRelationLinkTitle' => (version_compare(TYPO3_branch, '7.4', '>=') ? 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf' : 'LLL:EXT:cms/locallang_ttc.xlf') . ':images.addFileReference'
                     ),
                     'foreign_types' => array(
                         '0' => array(
