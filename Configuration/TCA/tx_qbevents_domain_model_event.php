@@ -140,7 +140,7 @@ return array(
                 'rows' => 15,
                 'eval' => 'trim'
             ),
-            'defaultExtras' => 'richtext[]:rte_transform[mode=ts_links]',
+            'defaultExtras' => 'richtext[]:rte_transform',
         ),
         'description' => array(
             'exclude' => 1,
@@ -151,7 +151,7 @@ return array(
                 'rows' => 15,
                 'eval' => 'trim'
             ),
-            'defaultExtras' => 'richtext[]:rte_transform[mode=ts_links]',
+            'defaultExtras' => 'richtext[]:rte_transform',
         ),
         'image' => array(
             'exclude' => 1,
