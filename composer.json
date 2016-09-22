@@ -52,6 +52,13 @@
         "post-autoload-dump": [
             "mkdir -p .Build/Web/typo3conf/ext/",
             "[ -L .Build/Web/typo3conf/ext/qbevents ] || ln -snvf ../../../../. .Build/Web/typo3conf/ext/qbevents"
+        ],
+        "install-deps": [
+                "cd Resources/Private/PHP && composer install --no-dev && rm -rf composer.lock autoload.php composer/"
+        ],
+        "t3x-pack": [
+                "sh -c 'git archive -o \"${PWD##*/}_`git describe --tags`.zip\" HEAD'",
+                "sh -c 'zip -r -g \"${PWD##*/}_`git describe --tags`.zip\" Resources/Private/PHP/'"
         ]
     },
     "extra": {
