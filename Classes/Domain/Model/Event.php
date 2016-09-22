@@ -159,7 +159,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function addDate(EventDate $date)
     {
-        $this->dates->attach($dates);
+        $this->dates->attach($date);
     }
 
     /**
@@ -170,7 +170,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function removeDate(EventDate $dateToRemove)
     {
-        $this->dates->detach($datesToRemove);
+        $this->dates->detach($dateToRemove);
     }
 
     /**
