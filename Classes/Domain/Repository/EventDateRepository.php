@@ -63,4 +63,50 @@ class EventDateRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
         return $query->execute($returnRawQueryResult);
     }
+
+    /**
+     * Returns bookings in range
+     *
+     * @return QueryResultInterface
+     */
+    public function findInRange($begin, $end)
+    {
+        $query = $this->createQuery();
+
+        $query->matching(
+            $query->logicalOr(
+                /* There are four different cases for range "positioning":
+                 * with $begin and $end being the search delimiters
+                 *
+                 * $begin  von     bis   $end
+                 * von     $begin  bis   $end
+                 * $begin  von     $end  bis
+                 * von     $begin  $end  bis
+                 *
+                 * where rule 1 is a subset of (2 || 3)
+                 */
+                /*
+                $query->logicalAnd(
+                        $query->greaterThanOrEqual('start', $begin),
+                        $query->lessThanOrEqual('start', $end),
+                        $query->greaterThanOrEqual('end', $begin),
+                        $query->lessThanOrEqual('end', $end)
+                ),*/
+                $query->logicalAnd(
+                    $query->greaterThanOrEqual('start', $begin),
+                    $query->lessThanOrEqual('start', $end)
+                ),
+                $query->logicalAnd(
+                    $query->greaterThanOrEqual('end', $begin),
+                    $query->lessThanOrEqual('end', $end)
+                ),
+                $query->logicalAnd(
+                    $query->lessThan('start', $begin),
+                    $query->greaterThan('end', $end)
+                )
+            )
+        );
+
+        return $query->execute();
+    }
 }
