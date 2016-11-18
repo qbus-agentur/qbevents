@@ -202,6 +202,7 @@ return array(
         'dates' => array(
             'exclude' => 1,
             'label' => 'LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_event.dates',
+            'l10n_mode' => 'exclude',
             'config' => array(
                 'type' => 'inline',
                 'foreign_table' => 'tx_qbevents_domain_model_eventdate',
