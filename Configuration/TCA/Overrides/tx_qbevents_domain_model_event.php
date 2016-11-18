@@ -5,6 +5,10 @@ if (!defined('TYPO3_MODE')) {
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::makeCategorizable(
     'qbevents',
-    'tx_qbevents_domain_model_event'
+    'tx_qbevents_domain_model_event',
+    'categories',
+    array(
+        'l10n_mode' => 'exclude',
+    ),
+    true
 );
-
