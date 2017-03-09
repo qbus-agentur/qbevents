@@ -77,9 +77,6 @@
 			</trans-unit>
 			<trans-unit id="tx_qbevents_domain_model_eventdate.frequency_count">
 				<source>Number of recurrences</source>
-			</trans-unit>
-			<trans-unit id="tx_qbevents_domain_model_eventdate.frequency_count">
-				<source>Number of recurrences</source>
 				<target>Anzahl an Wiederholungen</target>
 			</trans-unit>
 			<trans-unit id="tx_qbevents_domain_model_eventdate.frequency_until">
