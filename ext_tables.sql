@@ -13,6 +13,7 @@ CREATE TABLE tx_qbevents_domain_model_event (
 	image int(11) unsigned NOT NULL DEFAULT '0',
 	dates int(11) unsigned DEFAULT '0' NOT NULL,
 	categories int(11) unsigned DEFAULT '0' NOT NULL,
+	files int(11) unsigned NOT NULL DEFAULT '0',
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,

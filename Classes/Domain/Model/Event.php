@@ -59,12 +59,21 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $categories = null;
 
     /**
+     * files
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     * @lazy
+     */
+    protected $files = null;
+
+    /**
      * __construct
      */
     public function __construct()
     {
         $this->dates = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->categories = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->files = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
     /**
@@ -234,5 +243,40 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setCategories($categories)
     {
         $this->categories = $categories;
+    }
+
+    /**
+     * Returns the files
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $files
+     */
+    public function getFiles()
+    {
+        return $this->files;
+    }
+
+    /**
+     * Sets the files
+     *
+     * @param  \TYPO3\CMS\Extbase\Persistence\ObjectStorage $files
+     * @return void
+     */
+    public function setFiles($files)
+    {
+        $this->files = $files;
+    }
+
+    /**
+     * Adds a file to this files.
+     *
+     * @param  \TYPO3\CMS\Extbase\Domain\Model\FileReference $file
+     * @return void
+     */
+    public function addFile(\TYPO3\CMS\Extbase\Domain\Model\FileReference $file)
+    {
+        if ($this->getFiles() === null) {
+            $this->files = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        }
+        $this->getFiles()->attach($file);
     }
 }

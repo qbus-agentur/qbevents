@@ -18,16 +18,16 @@ return array(
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ),
-        'searchFields' => 'title,location,teaser,description,dates,image',
+        'searchFields' => 'title,location,teaser,description,dates,image,files',
         /* FIXME: This will not work reliably for workspaces (will take all workspaces and the live db into account) */
         'default_sortby' => 'ORDER BY (select MIN(start) from tx_qbevents_domain_model_eventdate where tx_qbevents_domain_model_eventdate.event = tx_qbevents_domain_model_event.uid and tx_qbevents_domain_model_eventdate.deleted = 0 and tx_qbevents_domain_model_eventdate.hidden = 0) DESC',
         'iconfile' => 'EXT:qbevents/Resources/Public/Icons/tx_qbevents_domain_model_event.svg'
     ),
     'interface' => array(
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, location, teaser, description, image dates',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, location, teaser, description, image, files, dates',
     ),
     'types' => array(
-        '1' => array('showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, --palette--;;1, title, location, teaser, description, image, dates, --div--;' . (version_compare(TYPO3_branch, '7.4', '>=') ? 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf' : 'LLL:EXT:cms/locallang_ttc.xlf') . ':tabs.access, starttime, endtime'),
+        '1' => array('showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, --palette--;;1, title, location, teaser, description, image, files, dates, --div--;' . (version_compare(TYPO3_branch, '7.4', '>=') ? 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf' : 'LLL:EXT:cms/locallang_ttc.xlf') . ':tabs.access, starttime, endtime'),
     ),
     'palettes' => array(
         '1' => array('showitem' => ''),
@@ -221,6 +221,29 @@ return array(
                 ],
                 'eval' => ''
             ),
+        ),
+        'files' => array(
+            'exclude' => 1,
+            'label' => 'LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_event.files',
+            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
+                'files',
+                [
+                    'appearance' => [
+                        'showPossibleLocalizationRecords' => 1,
+                        'showRemovedLocalizationRecords' => 1,
+                        'showAllLocalizationLink' => 1,
+                        'showSynchronizationLink' => 1
+                    ],
+                    'inline' => [
+                        'inlineOnlineMediaAddButtonStyle' => 'display:none'
+                    ],
+                    'foreign_match_fields' => [
+                        'fieldname' => 'files',
+                        'tablenames' => 'tx_qbevents_domain_model_event',
+                        'table_local' => 'sys_file',
+                    ],
+                ]
+            )
         ),
     ),
 );

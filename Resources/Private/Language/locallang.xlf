@@ -48,6 +48,9 @@
 			<trans-unit id="tx_qbevents_domain_model_eventdate.frequency_weekdays">
 				<source>FrequencyWeekdays</source>
 			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_event.files">
+				<source>Files</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

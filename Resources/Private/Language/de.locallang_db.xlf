@@ -27,6 +27,10 @@
 				<source>Image</source>
 				<target>Bild</target>
 			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_event.files">
+				<source>Files</source>
+				<target>Zugehörige Dateien</target>
+			</trans-unit>
 			<trans-unit id="tx_qbevents_domain_model_event.dates">
 				<source>Dates</source>
 				<target>Termine</target>

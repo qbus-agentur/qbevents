@@ -21,6 +21,9 @@
 			<trans-unit id="tx_qbevents_domain_model_event.image">
 				<source>Image</source>
 			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_event.files">
+				<source>Files</source>
+			</trans-unit>
 			<trans-unit id="tx_qbevents_domain_model_event.dates">
 				<source>Dates</source>
 			</trans-unit>

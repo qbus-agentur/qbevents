@@ -23,4 +23,15 @@
 			<f:format.html>{date.event.description}</f:format.html>
 		</div>
 	</f:if>
+	<f:if condition="{date.event.files}">
+		<ul class="files">
+			<f:for each="{date.event.files}" as="file">
+				<li>
+					<a href="{file.originalResource.publicUrl -> f:format.htmlspecialchars()}" class="file-download">
+						{f:if(condition:file.originalResource.title, then:file.originalResource.title, else:file.originalResource.name)}
+					</a>
+				</li>
+			</f:for>
+		</div>
+	</f:if>
 </div>
