@@ -63,7 +63,11 @@ class EventDateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 
         $limit = isset($this->settings['demands_limit']) ? $this->settings['demands_limit'] : 0;
 
-        $dates = $this->eventDateRepository->findUpcoming($eventDemands, $limit);
+        if (isset($this->settings['disableUpcomingRestriction'])) {
+            $dates = $this->eventDateRepository->find($eventDemands, $limit);
+        } else {
+            $dates = $this->eventDateRepository->findUpcoming($eventDemands, $limit);
+        }
 
         $variables = [
             'dates' => $dates,

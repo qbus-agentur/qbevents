@@ -41,6 +41,39 @@ class EventDateRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         return $query->execute();
     }
 
+    /**
+     * @return void
+     */
+    public function find($demands = array(), $limit = 0, $returnRawQueryResult = false)
+    {
+        $query = $this->createQuery();
+
+        /* Our EventDates are not localizable. Only the Event's are. So lets ignore the sys language flag.
+         * This is actually needed so that extbase does not create sql queries that try to find direct
+         * relations betweens translated Events and EventDates (as the relation between EventDate and Event
+         * can only be established in the default language) */
+        $query->getQuerySettings()->setRespectSysLanguage(false);
+
+        $constraints = array(
+        );
+
+        $additional = DemandsUtility::getConstraintsForDemand($query, $demands);
+        if ($additional !== null) {
+            $constraints[] = $additional;
+        }
+
+        if (!empty($constraints)) {
+            $query->matching($query->logicalAnd($constraints));
+        }
+
+        if ($limit) {
+            $query->setLimit((int) $limit);
+        }
+
+        return $query->execute($returnRawQueryResult);
+    }
+
+
     public function findUpcoming($demands = array(), $limit = 0, $returnRawQueryResult = false)
     {
         $query = $this->createQuery();
