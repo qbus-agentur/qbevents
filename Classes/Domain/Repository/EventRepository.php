@@ -16,7 +16,7 @@ class EventRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      *
      * @param $demands
      */
-    public function findDemanded($demands, $limit)
+    public function findDemanded($demands, $limit, $orderBy = null)
     {
         $query = $this->createQuery();
 
@@ -26,6 +26,12 @@ class EventRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $constraints = DemandsUtility::getConstraintsForDemand($query, $demands);
         if ($constraints !== null) {
             $query->matching($constraints);
+        }
+
+        if ($orderBy) {
+            $query->setOrderings([
+                $orderBy =>  \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
+            ]);
         }
 
         return $query->execute();

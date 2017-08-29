@@ -28,9 +28,33 @@ class EventController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
     public function listAction()
     {
+        $findUpcoming = false;
+        $orderby = null;
+
+        if (isset($this->settings['upcoming']) && $this->settings['upcoming']) {
+            $findUpcoming = true;
+        }
+        if (isset($this->settings['orderby']) && $this->settings['orderby']) {
+            $orderby = $this->settings['orderby'];
+        }
+
         $demands = $this->settings['demands'];
         $limit = isset($this->settings['demands_limit']) ? $this->settings['demands_limit'] : 0;
-        $events = $this->eventRepository->findDemanded($demands, $limit);
+
+        if ($findUpcoming) {
+            if (!is_array($demands)) {
+                $demands = [];
+            }
+            $demands[] = [
+                'demand' => [
+                    'operation' => 'GREATERTHANOREQUAL',
+                    'property' => 'dates.start',
+                    'value' => new \DateTime,
+                ]
+            ];
+        }
+
+        $events = $this->eventRepository->findDemanded($demands, $limit, $orderby);
 
         $this->view->assign('events', $events);
 
