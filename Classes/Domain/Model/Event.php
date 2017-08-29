@@ -204,6 +204,25 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
+     * Get a list of upcoming dates
+     * @TODO: Resolve recurrences
+     *
+     * @return array
+     */
+    public function getUpcomingDates()
+    {
+        $upcoming = [];
+        $now = new \DateTime;
+        foreach ($this->dates as $date) {
+            if ($date->getStart() >= $now) {
+                $upcoming[] = $date;
+            }
+        }
+
+        return $upcoming;
+    }
+
+    /**
      * Returns the image
      *
      * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
