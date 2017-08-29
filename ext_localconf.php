@@ -20,11 +20,12 @@ if (!defined('TYPO3_MODE')) {
     'Qbus.' . $_EXTKEY,
     'EventOverview',
     array(
-        'Event' => 'list',
+        'Event' => 'list, show',
 
     ),
     // non-cacheable actions
     array(
+        'Event' => 'list, show',
     )
 );
 

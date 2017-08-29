@@ -1,6 +1,7 @@
 <?php
 namespace Qbus\Qbevents\Controller;
 
+use Qbus\Qbevents\Domain\Model\Event;
 use Qbus\Qbevents\Domain\Repository\EventRepository;
 
 /**
@@ -38,6 +39,18 @@ class EventController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         }
 
         $table = 'tx_qbevents_domain_model_event';
-        $GLOBALS['TSFE']->addCacheTags(array($table));
+        isset($GLOBALS['TSFE']) && $GLOBALS['TSFE']->addCacheTags(array($table));
+    }
+
+    /**
+     * @param  Event $event
+     * @return void
+     */
+    public function showAction(Event $event)
+    {
+        $this->view->assign('event', $event);
+
+        $table = 'tx_qbevents_domain_model_event';
+        isset($GLOBALS['TSFE']) && $GLOBALS['TSFE']->addCacheTags(array($table . '_' . $event->getUid()));
     }
 }

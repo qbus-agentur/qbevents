@@ -21,6 +21,9 @@
 			<trans-unit id="qbevents.flexform.mode.eventlist">
 				<source>Event List</source>
 			</trans-unit>
+			<trans-unit id="qbevents.flexform.mode.eventlistAndDetail">
+				<source>Event List and Detail</source>
+			</trans-unit>
 			<trans-unit id="qbevents.flexform.mode.upcoming">
 				<source>Date List</source>
 			</trans-unit>

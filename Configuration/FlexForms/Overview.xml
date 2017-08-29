@@ -18,6 +18,10 @@
 								<type>select</type>
 								<items>
 									<numIndex index="1">
+										<numIndex index="0">LLL:EXT:qbevents/Resources/Private/Language/locallang_be.xlf:qbevents.flexform.mode.eventlistAndDetail</numIndex>
+										<numIndex index="1">Event->list;Event->show</numIndex>
+									</numIndex>
+									<numIndex index="2">
 										<numIndex index="0">LLL:EXT:qbevents/Resources/Private/Language/locallang_be.xlf:qbevents.flexform.mode.eventlist</numIndex>
 										<numIndex index="1">Event->list</numIndex>
 									</numIndex>
