@@ -113,7 +113,7 @@ class EventDate extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param  \DateTime $start
      * @return void
      */
-    public function setStart($start)
+    public function setStart(\DateTime $start = null)
     {
         $this->start = $start;
     }
@@ -134,7 +134,7 @@ class EventDate extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param  \DateTime $end
      * @return void
      */
-    public function setEnd($end)
+    public function setEnd(\DateTime $end = null)
     {
         $this->end = $end;
     }
