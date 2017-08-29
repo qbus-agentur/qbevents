@@ -18,7 +18,7 @@ if (!defined('TYPO3_MODE')) {
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
     $_EXTKEY,
     'Events',
-    'Event System'
+    'Event Dates'
 );
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['qbevents_events'] = 'pi_flexform';
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
@@ -29,7 +29,7 @@ $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['qbevents_eve
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
     $_EXTKEY,
     'EventOverview',
-    'Event Overview'
+    'Events'
 );
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['qbevents_eventoverview'] = 'pi_flexform';
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
