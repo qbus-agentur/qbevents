@@ -337,4 +337,12 @@ class Event extends AbstractEntity
     {
         $this->externalUrl = $externalUrl;
     }
+
+    /*
+     * @return int
+     */
+    public function getLanguageUid()
+    {
+        return $this->_languageUid;
+    }
 }
