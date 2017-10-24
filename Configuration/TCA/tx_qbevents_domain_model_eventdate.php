@@ -15,6 +15,8 @@ return array(
         'delete' => 'deleted',
         'enablecolumns' => array(
             'disabled' => 'hidden',
+            'endtime' => false,
+            'starttime' => false,
         ),
         'searchFields' => 'start,end,is_full_day,frequency,frequency_count,frequency_until',
         'iconfile' => 'EXT:qbevents/Resources/Public/Icons/tx_qbevents_domain_model_eventdate.svg'
