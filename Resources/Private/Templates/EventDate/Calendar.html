@@ -1,0 +1,61 @@
+<div id="qbevents-calendar-{contentObject.uid}">
+<table class="qbevents-calendar">
+	<thead>
+		<tr class="qbevents-calendar-nav">
+			<th><f:link.action arguments="{date: '{prev->f:format.date(format: \'Y-m\')}'}" pageType="{settings.ajaxPageType}" class="qbevents-calendar-nav-prev"><span class="qbevents-calendar-nav-text">⇦</span></f:link.action></th>
+			<th class="qbevents-calendar-nav-status" colspan="5"><f:format.date date="{month}" format="%B %Y"/></th>
+			<th><f:link.action arguments="{date: '{next->f:format.date(format: \'Y-m\')}'}" pageType="{settings.ajaxPageType}" class="qbevents-calendar-nav-next"><span class="qbevents-calendar-nav-text">⇨</span></f:link.action></th>
+		</tr>
+		<tr>
+			<th>Mo</th>
+			<th>Di</th>
+			<th>Mi</th>
+			<th>Do</th>
+			<th>Fr</th>
+			<th>Sa</th>
+			<th>So</th>
+		</tr>
+	</thead>
+	<tbody>
+		<f:for each="{weeks}" key="weeknumber" as="week">
+			<tr>
+				<f:for each="{week}" key="weekday" as="day">
+					<f:if condition="{day.day}">
+						<f:then>
+							<td class="curmonth {f:if(condition: day.dates, then: 'active')} {f:if(condition: day.today, then: 'today')}" data-count="{day.dates->f:count()}">
+								<span class="day">
+									<f:if condition="{day.day} < 10">0</f:if>{day.day}
+								</span>
+							</td>
+						</f:then>
+						<f:else>
+							<td class="othermonth"></td>
+						</f:else>
+					</f:if>
+				</f:for>
+			</tr>
+		</f:for>
+	</tbody>
+</table>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+	if (typeof window.jQuery !== 'undefined') {
+		(function($, calendar) {
+			var $calendar = $('#' + calendar);
+
+			$calendar.on('click', 'a.qbevents-calendar-nav-prev, a.qbevents-calendar-nav-next', function(e) {
+				var $this = $(this);
+				var $target = $calendar;
+
+				e.preventDefault();
+				$this.addClass('loading');
+				$target.load($(this).attr('href') + ' #' + $target.attr('id'), function() {
+					$this.removeClass('loading')
+				});
+			});
+		})(window.jQuery, 'qbevents-calendar-{contentObject.uid}');
+	}
+});
+</script>

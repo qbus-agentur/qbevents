@@ -145,6 +145,97 @@ class EventDateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
         ));
     }
 
+    /**
+     * calendar
+     *
+     * @param string $date
+     */
+    public function calendarAction($date = null)
+    {
+        $start = new \DateTime($date);
+        $start->modify('first day of this month')->setTime(0, 0, 0);
+        $end = clone $start;
+        $end->modify('last day of this month')->setTime(23, 59, 59);
+
+        $weeks = $this->collectCalendarData($start, $end);
+        $this->view->assign('weeks', $weeks);
+
+        $next = clone $start;
+        $next->modify('first day of next month');
+        $prev = clone $end;
+        $prev->modify('first day of last month');
+
+        $this->view->assign('month', $start);
+        $this->view->assign('prev', $prev);
+        $this->view->assign('next', $next);
+
+        $this->view->assign('contentObject', $this->configurationManager->getContentObject()->data);
+    }
+
+    protected function getWeekNumber(\DateTime $date) {
+        $tmp = clone $date;
+        $tmp->modify('first day of this month');
+
+        $offset = (int) ($tmp->format('N')) - 1;
+        return ceil(($date->format('d') + $offset)/7);
+    }
+
+    protected function collectCalendarData(\DateTime $start, \DateTime $end)
+    {
+        $demands = [
+            [
+                'demand' => [
+                    'operation' => 'GREATERTHANOREQUAL',
+                    'property' => 'start',
+                    'value' => $start,
+                ]
+            ],
+            [
+                'demand' => [
+                    'operation' => 'LESSTHANOREQUAL',
+                    'property' => 'end',
+                    'value' => $end,
+                ]
+            ],
+            [
+                'demand' => [
+                    'operation' => 'EQUALS',
+                    'property' => 'frequency',
+                    'value' => '0',
+                ]
+            ],
+        ];
+        $dates = $this->eventDateRepository->find($demands);
+        $weeks = [
+        ];
+
+        $startDay = (int) $start->format('N');
+        for ($i = 1; $i < $startDay; ++$i) {
+            $weeks[1][$i] = null;
+        }
+
+        $period = new \DatePeriod($start, new \DateInterval('P1D'), $end);
+        $today = new \DateTime;
+        foreach ($period as $date) {
+            $week = $this->getWeekNumber($date);
+            $weekday = (int) $date->format('N');
+            $day = (int) $date->format('d');
+            $weeks[$week][$weekday] = [
+                'day' => $day,
+                'today' => $today->format('Y-m-d') === $date->format('Y-m-d'),
+                'dates' => [],
+            ];
+        }
+
+        foreach ($dates as $date) {
+            $week = $this->getWeekNumber($date->getStart());
+            $weekday = (int) $date->getStart()->format('N');
+            $weeks[$week][$weekday]['dates'][] = $date;
+        }
+
+        return $weeks;
+    }
+
     protected function redirectIfPost($arguments = array(), $action = null)
     {
         if ($this->request->getMethod() === 'POST') {
