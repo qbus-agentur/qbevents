@@ -1,11 +1,15 @@
 <div id="qbevents-calendar-{contentObject.uid}">
-<table class="qbevents-calendar">
+<table class="qbevents-calendar-nav">
 	<thead>
-		<tr class="qbevents-calendar-nav">
+		<tr>
 			<th><f:link.action arguments="{date: '{prev->f:format.date(format: \'Y-m\')}'}" pageType="{settings.ajaxPageType}" class="qbevents-calendar-nav-prev"><span class="qbevents-calendar-nav-text">⇦</span></f:link.action></th>
 			<th class="qbevents-calendar-nav-status" colspan="5"><f:format.date date="{month}" format="%B %Y"/></th>
 			<th><f:link.action arguments="{date: '{next->f:format.date(format: \'Y-m\')}'}" pageType="{settings.ajaxPageType}" class="qbevents-calendar-nav-next"><span class="qbevents-calendar-nav-text">⇨</span></f:link.action></th>
 		</tr>
+	</thead>
+</table>
+<table class="qbevents-calendar">
+	<thead>
 		<tr>
 			<th>Mo</th>
 			<th>Di</th>
