@@ -20,7 +20,7 @@
 								<items>
 									<numIndex index="1">
 										<numIndex index="0">LLL:EXT:qbevents/Resources/Private/Language/locallang_be.xlf:qbevents.flexform.mode.eventlist</numIndex>
-										<numIndex index="1">EventDate->list;EventDate->show</numIndex>
+										<numIndex index="1">EventDate->list;EventDate->show;EventDate->ical</numIndex>
 									</numIndex>
 									<numIndex index="2">
 										<numIndex index="0">LLL:EXT:qbevents/Resources/Private/Language/locallang_be.xlf:qbevents.flexform.mode.teaser</numIndex>
@@ -29,6 +29,10 @@
 									<numIndex index="3">
 										<numIndex index="0">LLL:EXT:qbevents/Resources/Private/Language/locallang_be.xlf:qbevents.flexform.mode.calendar</numIndex>
 										<numIndex index="1">EventDate->calendar</numIndex>
+									</numIndex>
+									<numIndex index="4">
+										<numIndex index="0">LLL:EXT:qbevents/Resources/Private/Language/locallang_be.xlf:qbevents.flexform.mode.eventlist_legacy</numIndex>
+										<numIndex index="1">EventDate->list;EventDate->show</numIndex>
 									</numIndex>
 								</items>
 							</config>

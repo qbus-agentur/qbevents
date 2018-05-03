@@ -3,6 +3,7 @@ namespace Qbus\Qbevents\Controller;
 
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ResponseFactoryInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\Controller\ErrorController;
 use TYPO3\CMS\Core\Http\ImmediateResponseException;
@@ -26,12 +27,19 @@ class EventDateController extends ActionController
     protected $eventDateRepository;
 
     /**
-     * @param  EventDateRepository $eventDateRepository
-     * @return void
+     * @var ResponseFactoryInterface
      */
+    protected $responseFactory;
+
     public function injectEventDateRepository(EventDateRepository $eventDateRepository)
     {
         $this->eventDateRepository = $eventDateRepository;
+    }
+
+
+    public function injectResponseFactory(ResponseFactoryInterface $responseFactory)
+    {
+        $this->responseFactory = $responseFactory;
     }
 
     /**
@@ -164,6 +172,34 @@ class EventDateController extends ActionController
             'tx_qbevents_domain_model_event',
             'tx_qbevents_domain_model_eventdate',
         ]);
+    }
+
+    /**
+     * @param EventDate $date
+     * @return string
+     */
+    public function icalAction(EventDate $date)
+    {
+        /* ->event may be hidden, return 404 in that case */
+        if ($date->getEvent() === null) {
+            $response = GeneralUtility::makeInstance(ErrorController::class)->pageNotFoundAction($GLOBALS['TYPO3_REQUEST'], 'Event not found.', ['code' => PageAccessFailureReasons::PAGE_NOT_FOUND]);
+            throw new ImmediateResponseException($response);
+        }
+        $siteUrl = $GLOBALS['TYPO3_REQUEST']->getAttribute('normalizedParams')->getSiteUrl();
+        $vCalendar = new \Eluceo\iCal\Component\Calendar($siteUrl);
+        $vEvent = new \Eluceo\iCal\Component\Event();
+        $vEvent
+            ->setDtStart($date->getStart())
+            ->setDtEnd($date->getEnd())
+            ->setSummary($date->getEvent()->getTitle());
+        $vCalendar->addComponent($vEvent);
+
+        $filename = str_replace(['.', ',', ' '], '_', preg_replace('/[[:^print:]]/', '', $date->getEvent()->getTitle())) . '_' . $date->getStart()->format('Y-m-d') . '.ics';
+        $response = $this->responseFactory->createResponse()
+            ->withHeader('Content-Type', 'text/calendar; charset=utf-8')
+            ->withHeader('Content-Disposition', 'attachment; filename="' . $filename . '"');
+        $response->getBody()->write($vCalendar->render());
+        throw new ImmediateResponseException($response);
     }
 
     /**
