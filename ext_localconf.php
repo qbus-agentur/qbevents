@@ -7,8 +7,7 @@ if (!defined('TYPO3')) {
     'Qbevents',
     'Events',
     array(
-        \Qbus\Qbevents\Controller\EventDateController::class => 'list, show, teaser, calendar',
-
+        \Qbus\Qbevents\Controller\EventDateController::class => 'list, show, teaser, calendar, ical',
     ),
     // non-cacheable actions
     array(

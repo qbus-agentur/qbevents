@@ -167,6 +167,33 @@ class EventDateController extends ActionController
     }
 
     /**
+     * @param EventDate $date
+     * @return string
+     */
+    public function icalAction(EventDate $date)
+    {
+        /* ->event may be hidden, return 404 in that case */
+        if ($date->getEvent() === null) {
+            $response = GeneralUtility::makeInstance(ErrorController::class)->pageNotFoundAction($GLOBALS['TYPO3_REQUEST'], 'Event not found.', ['code' => PageAccessFailureReasons::PAGE_NOT_FOUND]);
+            throw new ImmediateResponseException($response);
+        }
+        $siteUrl = $GLOBALS['TYPO3_REQUEST']->getAttribute('normalizedParams')->getSiteUrl();
+        $vCalendar = new \Eluceo\iCal\Component\Calendar($siteUrl);
+        $vEvent = new \Eluceo\iCal\Component\Event();
+        $vEvent
+            ->setDtStart($date->getStart())
+            ->setDtEnd($date->getEnd())
+            ->setSummary($date->getEvent()->getTitle());
+        $vCalendar->addComponent($vEvent);
+
+        header('Content-Type: text/calendar; charset=utf-8');
+        $filename = str_replace(['.', ',', ' '], '_', preg_replace('/[[:^print:]]/', '', $date->getEvent()->getTitle())) . '_' . $date->getStart()->format('Y-m-d') . '.ics';
+        header('Content-Disposition: attachment; filename="' . $filename . '"');
+        echo $vCalendar->render();
+        exit;
+    }
+
+    /**
      * teaser
      */
     public function teaserAction()

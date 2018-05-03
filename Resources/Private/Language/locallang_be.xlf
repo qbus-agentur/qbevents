@@ -22,10 +22,10 @@
 				<source>Calendar</source>
 			</trans-unit>
 			<trans-unit id="qbevents.flexform.mode.eventlist">
-				<source>Event List</source>
+				<source>Event List, Detail and ical</source>
 			</trans-unit>
-			<trans-unit id="qbevents.flexform.mode.eventlistAndDetail">
-				<source>Event List and Detail</source>
+			<trans-unit id="qbevents.flexform.mode.eventlist_legacy">
+				<source>Event List (legacy)</source>
 			</trans-unit>
 			<trans-unit id="qbevents.flexform.mode.upcoming">
 				<source>Date List</source>
