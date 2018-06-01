@@ -89,7 +89,7 @@ return array(
                 'type' => 'input',
                 'size' => 13,
                 'max' => 20,
-                'eval' => 'datetime',
+                'eval' => 'datetime,int',
                 'checkbox' => 0,
                 'default' => 0,
                 'range' => array(
@@ -105,7 +105,7 @@ return array(
                 'type' => 'input',
                 'size' => 13,
                 'max' => 20,
-                'eval' => 'datetime',
+                'eval' => 'datetime,int',
                 'checkbox' => 0,
                 'default' => 0,
                 'range' => array(
