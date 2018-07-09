@@ -63,7 +63,7 @@ return array(
                 'type' => 'input',
                 'size' => 12,
                 'checkbox' => 0,
-                'eval' => 'datetime'
+                'eval' => 'datetime,int'
             ),
         ),
         'end' => array(
@@ -73,7 +73,7 @@ return array(
                 'type' => 'input',
                 'size' => 12,
                 'checkbox' => 0,
-                'eval' => 'datetime'
+                'eval' => 'datetime,int'
             ),
         ),
         'is_full_day' => array(
@@ -146,7 +146,7 @@ return array(
                 'type' => 'input',
                 'size' => 12,
                 'checkbox' => 1,
-                'eval' => 'datetime'
+                'eval' => 'datetime,int'
             ),
         ),
         'frequency_weekdays' => array(
