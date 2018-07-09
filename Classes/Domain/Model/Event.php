@@ -67,6 +67,13 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $files = null;
 
     /**
+     * externalUrl
+     *
+     * @var string
+     */
+    protected $externalUrl = '';
+
+    /**
      * __construct
      */
     public function __construct()
@@ -297,5 +304,26 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
             $this->files = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         }
         $this->getFiles()->attach($file);
+    }
+
+    /**
+     * Returns the externalUrl
+     *
+     * @return string $externalUrl
+     */
+    public function getExternalUrl()
+    {
+        return $this->externalUrl;
+    }
+
+    /**
+     * Sets the externalUrl
+     *
+     * @param  string $externalUrl
+     * @return void
+     */
+    public function setExternalUrl($externalUrl)
+    {
+        $this->externalUrl = $externalUrl;
     }
 }

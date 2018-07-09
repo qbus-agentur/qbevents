@@ -14,6 +14,7 @@ CREATE TABLE tx_qbevents_domain_model_event (
 	dates int(11) unsigned DEFAULT '0' NOT NULL,
 	categories int(11) unsigned DEFAULT '0' NOT NULL,
 	files int(11) unsigned NOT NULL DEFAULT '0',
+	external_url varchar(1024) DEFAULT '' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,

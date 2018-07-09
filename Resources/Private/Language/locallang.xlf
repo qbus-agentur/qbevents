@@ -51,6 +51,9 @@
 			<trans-unit id="tx_qbevents_domain_model_event.files">
 				<source>Files</source>
 			</trans-unit>
+			<trans-unit id="tx_qbevents_domain_model_event.external_url">
+				<source>External Url</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

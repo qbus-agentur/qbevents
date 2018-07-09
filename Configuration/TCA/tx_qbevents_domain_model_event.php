@@ -18,16 +18,16 @@ return array(
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ),
-        'searchFields' => 'title,location,teaser,description,dates,image,files',
+        'searchFields' => 'title,location,teaser,description,dates,image,files,external_url',
         /* FIXME: This will not work reliably for workspaces (will take all workspaces and the live db into account) */
         'default_sortby' => 'ORDER BY (select MIN(start) from tx_qbevents_domain_model_eventdate where tx_qbevents_domain_model_eventdate.event = tx_qbevents_domain_model_event.uid and tx_qbevents_domain_model_eventdate.deleted = 0 and tx_qbevents_domain_model_eventdate.hidden = 0) DESC',
         'iconfile' => 'EXT:qbevents/Resources/Public/Icons/tx_qbevents_domain_model_event.svg'
     ),
     'interface' => array(
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, location, teaser, description, image, files, dates',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, location, teaser, description, image, files, external_url, dates',
     ),
     'types' => array(
-        '1' => array('showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, --palette--;;1, title, location, teaser, description, image, files, dates, --div--;' . (version_compare(TYPO3_branch, '7.4', '>=') ? 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf' : 'LLL:EXT:cms/locallang_ttc.xlf') . ':tabs.access, starttime, endtime'),
+        '1' => array('showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, --palette--;;1, title, location, teaser, description, image, files, dates, external_url, --div--;' . (version_compare(TYPO3_branch, '7.4', '>=') ? 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf' : 'LLL:EXT:cms/locallang_ttc.xlf') . ':tabs.access, starttime, endtime'),
     ),
     'palettes' => array(
         '1' => array('showitem' => ''),
@@ -244,6 +244,25 @@ return array(
                     ],
                 ]
             )
+        ),
+        'external_url' => array(
+            'exclude' => true,
+            'label' => 'LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_event.external_url',
+            'config' => [
+                'type' => 'input',
+                'renderType' => 'inputLink',
+                'size' => 50,
+                'max' => 1024,
+                'eval' => 'trim',
+                'fieldControl' => [
+                    'linkPopup' => [
+                        'options' => [
+                            'title' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header_link_formlabel',
+                        ],
+                    ],
+                ],
+                'softref' => 'typolink'
+            ]
         ),
     ),
 );

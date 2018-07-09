@@ -24,6 +24,9 @@
 			<trans-unit id="files.description">
 				<source>files</source>
 			</trans-unit>
+			<trans-unit id="external_url.description">
+				<source>external_url</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
