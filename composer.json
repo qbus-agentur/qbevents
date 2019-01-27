@@ -24,20 +24,11 @@
 	"simshaun/recurr": "0.6.1"
     },
     "require-dev": {
-        "namelesscoder/typo3-repository-client": "1.1.x-dev",
-        "mikey179/vfsStream": "1.4.*@dev",
-        "phpunit/phpunit": "~4.7.0"
+        "typo3/testing-framework": "^2.0 || ^4.9"
     },
     "autoload": {
         "psr-4": {
             "Qbus\\Qbevents\\": "Classes"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Qbus\\Qbevents\\": "Tests",
-            "TYPO3\\CMS\\Core\\Tests\\": ".Build/vendor/typo3/cms/typo3/sysext/core/Tests/",
-            "TYPO3\\CMS\\Fluid\\Tests\\": ".Build/vendor/typo3/cms/typo3/sysext/fluid/Tests/"
         }
     },
     "replace": {
@@ -45,14 +36,10 @@
         "typo3-ter/qbevents": "self.version"
     },
     "config": {
-        "vendor-dir": ".Build/vendor",
-        "bin-dir": ".Build/bin"
+        "vendor-dir": ".build/vendor"
     },
     "scripts": {
-        "post-autoload-dump": [
-            "mkdir -p .Build/Web/typo3conf/ext/",
-            "[ -L .Build/Web/typo3conf/ext/qbevents ] || ln -snvf ../../../../. .Build/Web/typo3conf/ext/qbevents"
-        ],
+        "post-autoload-dump": "mkdir -p .build/web/typo3conf/ext/ && ln -snf ../../../.. .build/web/typo3conf/ext/qbevents",
         "install-deps": [
                 "cd Resources/Private/PHP && composer install --no-dev && rm -rf composer.lock autoload.php composer/"
         ],
@@ -66,8 +53,7 @@
             "dev-master": "1.0.x-dev"
         },
         "typo3/cms": {
-            "cms-package-dir": "{$vendor-dir}/typo3/cms",
-            "web-dir": ".Build/Web"
+            "web-dir": ".build/web"
         }
     }
 }
