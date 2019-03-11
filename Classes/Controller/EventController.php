@@ -77,4 +77,28 @@ class EventController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $table = 'tx_qbevents_domain_model_event';
         isset($GLOBALS['TSFE']) && $GLOBALS['TSFE']->addCacheTags(array($table . '_' . $event->getUid()));
     }
+
+    /**
+     * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface $request
+     * @param \TYPO3\CMS\Extbase\Mvc\ResponseInterface $response
+     * @throws \Exception|\TYPO3\CMS\Extbase\Property\Exception
+     */
+    public function processRequest(\TYPO3\CMS\Extbase\Mvc\RequestInterface $request, \TYPO3\CMS\Extbase\Mvc\ResponseInterface $response)
+    {
+        try {
+            parent::processRequest($request, $response);
+        }
+        catch(\TYPO3\CMS\Extbase\Property\Exception $e) {
+            $p = $e->getPrevious();
+
+            if ($p instanceof  \TYPO3\CMS\Extbase\Property\Exception\InvalidSourceException && $p->getCode() === 1297931020) {
+                $GLOBALS['TSFE']->pageNotFoundAndExit('Event not found.');
+            } elseif ($p instanceof \TYPO3\CMS\Extbase\Property\Exception\TargetNotFoundException && $p->getCode() === 1297933823) {
+                $GLOBALS['TSFE']->pageNotFoundAndExit('Event is no longer available', 'HTTP/1.0 410 Gone');
+            } else {
+                throw $e;
+            }
+        }
+    }
+
 }
