@@ -87,6 +87,10 @@ class EventController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {
         try {
             parent::processRequest($request, $response);
+        } catch (\TYPO3\CMS\Extbase\Property\Exception\InvalidSourceException $e) {
+            $GLOBALS['TSFE']->pageNotFoundAndExit('Event not found');
+        } catch (\TYPO3\CMS\Extbase\Property\Exception\TargetNotFoundException $e) {
+            $GLOBALS['TSFE']->pageNotFoundAndExit('Event is no longer available', 'HTTP/1.0 410 Gone');
         }
         catch(\TYPO3\CMS\Extbase\Property\Exception $e) {
             $p = $e->getPrevious();
