@@ -100,13 +100,13 @@ class DataHandlerHooks
      */
     protected function getEventRecurrenceService()
     {
-        return $this->getObjectManager()->get(\Qbus\Qbevents\Service\EventRecurrenceService::class);
+        return $this->getExtbaseObjectManager()->get(\Qbus\Qbevents\Service\EventRecurrenceService::class);
     }
 
     /**
      * @return \TYPO3\CMS\Extbase\Object\ObjectManager
      */
-    protected function getObjectManager()
+    protected function getExtbaseObjectManager()
     {
         return \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\ObjectManager::class);
     }
