@@ -1,6 +1,9 @@
 <?php
 namespace Qbus\Qbevents\Domain\Model;
 
+use TYPO3\CMS\Extbase\Annotation\ORM\Cascade;
+use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
+
 /**
  * Event
  */
@@ -38,6 +41,8 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * dates
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Qbus\Qbevents\Domain\Model\EventDate>
+     * @Lazy
+     * @Cascade("remove")
      * @lazy
      * @cascade remove
      */
@@ -54,6 +59,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * categories
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
+     * @Lazy
      * @lazy
      */
     protected $categories = null;
@@ -62,6 +68,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * files
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     * @Lazy
      * @lazy
      */
     protected $files = null;
