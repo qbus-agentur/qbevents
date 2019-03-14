@@ -2,6 +2,8 @@
 namespace Qbus\Qbevents\Domain\Repository;
 
 use Qbus\Qbevents\Utility\DemandsUtility;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
+
 
 /**
  * EventDateRepository
@@ -22,7 +24,7 @@ class EventDateRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * @param int        $uid
      * @param array|NULL $enableFieldsToBeIgnored
      *
-     * @return void
+     * @return QueryResultInterface
      */
     public function findRecurrencesByUid($uid, $enableFieldsToBeIgnored = null)
     {
@@ -42,7 +44,10 @@ class EventDateRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     }
 
     /**
-     * @return void
+     * @param array $demands
+     * @param int $limit
+     * @param bool $returnRawQueryResult
+     * @return QueryResultInterface|array
      */
     public function find($demands = array(), $limit = 0, $returnRawQueryResult = false)
     {
@@ -74,6 +79,12 @@ class EventDateRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     }
 
 
+    /**
+     * @param array $demands
+     * @param int $limit
+     * @param bool $returnRawQueryResult
+     * @return QueryResultInterface|array
+     */
     public function findUpcoming($demands = array(), $limit = 0, $returnRawQueryResult = false)
     {
         $query = $this->createQuery();
@@ -106,6 +117,8 @@ class EventDateRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     /**
      * Returns bookings in range
      *
+     * @param \DateTime $begin
+     * @param \DateTime $end
      * @return QueryResultInterface
      */
     public function findInRange($begin, $end)

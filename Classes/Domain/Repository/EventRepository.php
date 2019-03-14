@@ -2,6 +2,7 @@
 namespace Qbus\Qbevents\Domain\Repository;
 
 use Qbus\Qbevents\Utility\DemandsUtility;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 
 /**
  * EventRepository
@@ -14,7 +15,10 @@ class EventRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     /**
      * findDemanded
      *
-     * @param $demands
+     * @param array $demands
+     * @param int|string $limit
+     * @param string $orderBy
+     * @return QueryResultInterface
      */
     public function findDemanded($demands, $limit, $orderBy = null)
     {
