@@ -24,7 +24,7 @@ class DataHandlerHooks
      * @param  DataHandler $dataHandler
      * @return void
      */
-    public function processDatamap_afterAllOperations(DataHandler $dataHandler)
+    public function processDatamap_afterAllOperations(/*DataHandler $dataHandler*/)
     {
         if (count(self::$deferred) > 0) {
             foreach (self::$deferred as $uid) {
