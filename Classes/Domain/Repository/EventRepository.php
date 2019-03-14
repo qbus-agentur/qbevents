@@ -43,7 +43,7 @@ class EventRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         if (!$result instanceof QueryResultInterface) {
             throw new \RuntimeException(
                 QueryInterface::class . '::execute(false) didn\'t return an instance of ' . QueryResultInterface::class,
-                1552572230
+                1552574268
             );
         }
 
