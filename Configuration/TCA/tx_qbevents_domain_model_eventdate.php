@@ -48,13 +48,32 @@ return array(
                 'max' => 255,
             )
         ),
-        'hidden' => array(
-            'exclude' => 0,
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
-            'config' => array(
-                'type' => 'check',
-                'default' => '0'
-            ),
+        'hidden' => (
+            version_compare(TYPO3_branch, '9.5', '>=') ?
+            [
+                'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.enabled',
+                'exclude' => true,
+                'config' => [
+                    'type' => 'check',
+                    'renderType' => 'checkboxToggle',
+                    'default' => 0,
+                    'items' => [
+                        [
+                            0 => '',
+                            1 => '',
+                            'invertStateDisplay' => true,
+                        ],
+                    ],
+                ],
+            ]
+            :
+            [
+                'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
+                'exclude' => true,
+                'config' => [
+                    'type' => 'check',
+                ],
+            ]
         ),
         'start' => array(
             'exclude' => 1,
