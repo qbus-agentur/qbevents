@@ -126,7 +126,7 @@ class EventDateRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $query = $this->createQuery();
 
         $query->matching(
-            $query->logicalOr(
+            $query->logicalOr([
                 /* There are four different cases for range "positioning":
                  * with $begin and $end being the search delimiters
                  *
@@ -144,19 +144,19 @@ class EventDateRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                         $query->greaterThanOrEqual('end', $begin),
                         $query->lessThanOrEqual('end', $end)
                 ),*/
-                $query->logicalAnd(
+                $query->logicalAnd([
                     $query->greaterThanOrEqual('start', $begin),
                     $query->lessThanOrEqual('start', $end)
-                ),
-                $query->logicalAnd(
+                ]),
+                $query->logicalAnd([
                     $query->greaterThanOrEqual('end', $begin),
                     $query->lessThanOrEqual('end', $end)
-                ),
-                $query->logicalAnd(
+                ]),
+                $query->logicalAnd([
                     $query->lessThan('start', $begin),
                     $query->greaterThan('end', $end)
-                )
-            )
+                ])
+            ])
         );
 
         return $query->execute();
