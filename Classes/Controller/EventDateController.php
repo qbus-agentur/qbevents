@@ -241,7 +241,7 @@ class EventDateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 
     protected function redirectIfPost($arguments = array(), $action = null)
     {
-        if ($this->request->getMethod() === 'POST') {
+        if ($this->request instanceof \TYPO3\CMS\Extbase\Mvc\Web\Request && $this->request->getMethod() === 'POST') {
             $uri = $this->uriBuilder->reset()->setUseCacheHash(false)->uriFor($action, $arguments, null, null, null);
 
             header('HTTP/1.1 303 See Other');
