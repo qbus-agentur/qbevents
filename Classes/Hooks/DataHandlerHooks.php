@@ -67,13 +67,13 @@ class DataHandlerHooks
         }
 
         if ($status === 'update' && isset($fields['hidden']) && $fields['hidden']) {
-            $this->getEventRecurrenceService()->hideRecurrences($id);
+            $this->getEventRecurrenceService()->hideRecurrences((int)$id);
 
             return;
         }
 
         if ($status === 'update' && isset($fields['hidden']) && !$fields['hidden']) {
-            $this->getEventRecurrenceService()->unhideRecurrences($id);
+            $this->getEventRecurrenceService()->unhideRecurrences((int)$id);
         }
 
         $change = (
@@ -91,7 +91,7 @@ class DataHandlerHooks
         );
 
         if ($change) {
-            $this->getEventRecurrenceService()->updateRecurrences($id);
+            $this->getEventRecurrenceService()->updateRecurrences((int)$id);
         }
     }
 
