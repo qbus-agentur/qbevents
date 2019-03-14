@@ -26,7 +26,7 @@ class DemandsUtility
     {
         $constraints = array();
 
-        if (!is_array($demands) || empty($demands)) {
+        if (count($demands) === 0) {
             return null;
         }
 
