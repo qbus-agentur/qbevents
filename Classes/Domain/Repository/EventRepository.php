@@ -2,6 +2,7 @@
 namespace Qbus\Qbevents\Domain\Repository;
 
 use Qbus\Qbevents\Utility\DemandsUtility;
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 
 /**
@@ -38,6 +39,14 @@ class EventRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             ]);
         }
 
-        return $query->execute();
+        $result = $query->execute();
+        if (!$result instanceof QueryResultInterface) {
+            throw new \RuntimeException(
+                QueryInterface::class . '::execute(false) didn\'t return an instance of ' . QueryResultInterface::class,
+                1552572230
+            );
+        }
+
+        return $result;
     }
 }
