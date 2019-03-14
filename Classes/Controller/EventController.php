@@ -59,6 +59,9 @@ class EventController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->view->assign('events', $events);
 
         if (isset($this->settings['template']) && $this->settings['template']) {
+            if (!method_exists($this->view, 'setTemplatePathAndFilename')) {
+                throw new \Exception('View ' . get_class($this->view) . ' does not support template override', 1552556765);
+            }
             $this->view->setTemplatePathAndFilename($this->settings['template']);
         }
 
