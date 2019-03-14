@@ -31,7 +31,7 @@ class DataHandlerHooks
                 $this->getEventRecurrenceService()->updateRecurrences($uid);
             }
         }
-        self:$deferred = array();
+        self::$deferred = [];
     }
 
     /**
