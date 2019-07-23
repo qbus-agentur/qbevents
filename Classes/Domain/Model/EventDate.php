@@ -53,7 +53,7 @@ class EventDate extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @var int
      */
-    protected $frequency = '';
+    protected $frequency = 0;
 
     /**
      * frequencyCount
