@@ -107,6 +107,8 @@ class EventDateRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $constraints = array(
             $query->greaterThan('start', new \DateTime('NOW')),
             $query->equals('frequency', 0),
+            $query->equals('event.hidden', 0),
+            $query->equals('event.deleted', 0),
         );
 
         $additional = DemandsUtility::getConstraintsForDemand($query, $demands);
