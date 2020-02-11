@@ -89,6 +89,14 @@ class EventDateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
             'tx_qbevents_domain_model_event',
             'tx_qbevents_domain_model_eventdate',
         ]);
+
+        // Update possibly modified settings into the view –  the modified settings are not updated automatically,
+        // therefore we assign them here.
+        if (method_exists($this->view, 'injectSettings')) {
+            $this->view->injectSettings($this->settings);
+        }
+        // In TYPO3.Flow, solved through Object Lifecycle methods, we need to call it explicitly
+        $this->view->assign('settings', $this->settings);
     }
 
     /**
