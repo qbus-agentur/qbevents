@@ -12,3 +12,10 @@ if (!defined('TYPO3_MODE')) {
     ),
     true
 );
+
+/* Ensure that EventDate->setPid() is able to update the pid. */
+$GLOBALS['TCA']['tx_qbevents_domain_model_event']['columns']['pid'] = [
+    'config' => [
+        'type' => 'passthrough',
+    ]
+];
