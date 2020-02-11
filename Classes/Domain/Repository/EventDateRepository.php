@@ -69,6 +69,9 @@ class EventDateRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $query->getQuerySettings()->setRespectSysLanguage(false);
 
         $constraints = array(
+            $query->equals('frequency', 0),
+            $query->equals('event.hidden', 0),
+            $query->equals('event.deleted', 0),
         );
 
         $additional = DemandsUtility::getConstraintsForDemand($query, $demands);
