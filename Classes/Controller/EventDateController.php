@@ -3,6 +3,7 @@ namespace Qbus\Qbevents\Controller;
 
 use Qbus\Qbevents\Domain\Model\EventDate;
 use Qbus\Qbevents\Domain\Repository\EventDateRepository;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 
 /**
  * EventDateController
@@ -134,12 +135,7 @@ class EventDateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 
         $dates = $this->eventDateRepository->findUpcoming($demands, 1);
 
-        $date = null;
-        if ($dates instanceof \TYPO3\CMS\Extbase\Persistence\QueryResultInterface) {
-            $date = $dates->getFirst();
-        } elseif (is_array($dates)) {
-            $date = isset($dates[0]) ? $dates[0] : null;
-        }
+        $date = $dates->getFirst();
 
         $variables = [
             /* Heads UP! $date may be null */
