@@ -32,7 +32,6 @@
         }
     },
     "replace": {
-        "qbevents": "self.version",
         "typo3-ter/qbevents": "self.version"
     },
     "config": {
