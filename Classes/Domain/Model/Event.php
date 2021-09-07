@@ -1,13 +1,17 @@
 <?php
 namespace Qbus\Qbevents\Domain\Model;
 
+use TYPO3\CMS\Extbase\Annotation as Extbase;
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Annotation\ORM\Cascade;
 use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
 
 /**
  * Event
  */
-class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+class Event extends AbstractEntity
 {
     /**
      * title
@@ -43,8 +47,8 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Qbus\Qbevents\Domain\Model\EventDate>
      * @Lazy
      * @Cascade("remove")
-     * @lazy
-     * @cascade remove
+     * @Extbase\ORM\Lazy
+     * @Extbase\ORM\Cascade("remove")
      */
     protected $dates = null;
 
@@ -60,7 +64,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
      * @Lazy
-     * @lazy
+     * @Extbase\ORM\Lazy
      */
     protected $categories = null;
 
@@ -69,7 +73,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      * @Lazy
-     * @lazy
+     * @Extbase\ORM\Lazy
      */
     protected $files = null;
 
@@ -85,9 +89,9 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function __construct()
     {
-        $this->dates = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $this->categories = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $this->files = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->dates = new ObjectStorage();
+        $this->categories = new ObjectStorage();
+        $this->files = new ObjectStorage();
     }
 
     /**
@@ -305,10 +309,10 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param  \TYPO3\CMS\Extbase\Domain\Model\FileReference $file
      * @return void
      */
-    public function addFile(\TYPO3\CMS\Extbase\Domain\Model\FileReference $file)
+    public function addFile(FileReference $file)
     {
         if ($this->getFiles() === null) {
-            $this->files = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+            $this->files = new ObjectStorage();
         }
         $this->getFiles()->attach($file);
     }

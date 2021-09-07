@@ -1,10 +1,11 @@
 <?php
 namespace Qbus\Qbevents\Domain\Model;
 
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 /**
  * EventDate
  */
-class EventDate extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+class EventDate extends AbstractEntity
 {
     /**
      * hidden

@@ -1,6 +1,14 @@
 <?php
 namespace Qbus\Qbevents\Controller;
 
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Frontend\Controller\ErrorController;
+use TYPO3\CMS\Core\Http\ImmediateResponseException;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
+use TYPO3\CMS\Extbase\Mvc\Request;
+use Qbus\Qbevents\Domain\Model\Event;
 use Qbus\Qbevents\Domain\Model\EventDate;
 use Qbus\Qbevents\Domain\Repository\EventDateRepository;
 
@@ -10,7 +18,7 @@ use Qbus\Qbevents\Domain\Repository\EventDateRepository;
  * @author Benjamin Franzke <bfr@qbus.de>
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class EventDateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class EventDateController extends ActionController
 {
     /**
      * @var EventDateRepository
@@ -103,11 +111,48 @@ class EventDateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
      * show
      *
      * @param EventDate $date
+     * @param Event $event
      *
      * @return void
      */
-    public function showAction(EventDate $date)
+    public function showAction(EventDate $date = null, Event $event = null)
     {
+        if ($date === null && $event !== null) {
+            $current_date = new \DateTime();
+            $redirect_to = null;
+
+            foreach ($event->getDates() as $date) {
+                if ($date->getStart() > $current_date) {
+                    $redirect_to = $date;
+                    break;
+                }
+            }
+
+            if (!$redirect_to) {
+                /* Pick the last one, if none is in future */
+                foreach ($event->getDates() as $date) {
+                    $redirect_to = $date;
+                }
+            }
+            if (!$redirect_to) {
+                $response = GeneralUtility::makeInstance(ErrorController::class)->pageNotFoundAction($GLOBALS['TYPO3_REQUEST'], 'Event not found.');
+                throw new ImmediateResponseException($response);
+                exit;
+            }
+
+            $uri = $this->uriBuilder->reset()->setUseCacheHash(true)->uriFor('show', ['date' => $redirect_to], null, null, null);
+
+            header('HTTP/1.1 303 See Other');
+            header("Location: $uri");
+            exit;
+        }
+
+        /* ->event may be hidden, return 404 in that case */
+        if ($date === null || $date->getEvent() == null) {
+            $response = GeneralUtility::makeInstance(ErrorController::class)->pageNotFoundAction($GLOBALS['TYPO3_REQUEST'], 'Event not found.');
+            throw new ImmediateResponseException($response);
+        }
+
         $variables = [
             'date' => $date,
             'extended' => [],
@@ -135,7 +180,7 @@ class EventDateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
         $dates = $this->eventDateRepository->findUpcoming($demands, 1);
 
         $date = null;
-        if ($dates instanceof \TYPO3\CMS\Extbase\Persistence\QueryResultInterface) {
+        if ($dates instanceof QueryResultInterface) {
             $date = $dates->getFirst();
         } elseif (is_array($dates)) {
             $date = isset($dates[0]) ? $dates[0] : null;
@@ -249,7 +294,7 @@ class EventDateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 
     protected function redirectIfPost($arguments = array(), $action = null)
     {
-        if ($this->request instanceof \TYPO3\CMS\Extbase\Mvc\Web\Request && $this->request->getMethod() === 'POST') {
+        if ($this->request instanceof Request && $this->request->getMethod() === 'POST') {
             $uri = $this->uriBuilder->reset()->setUseCacheHash(false)->uriFor($action, $arguments, null, null, null);
 
             header('HTTP/1.1 303 See Other');

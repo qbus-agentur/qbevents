@@ -1,6 +1,7 @@
 <?php
 namespace Qbus\Qbevents\Domain\Repository;
 
+use TYPO3\CMS\Extbase\Persistence\Repository;
 use Qbus\Qbevents\Utility\DemandsUtility;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
@@ -11,7 +12,7 @@ use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
  * @author Benjamin Franzke <bfr@qbus.de>
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class EventRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+class EventRepository extends Repository
 {
     /**
      * findDemanded
@@ -35,7 +36,7 @@ class EventRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
         if ($orderBy) {
             $query->setOrderings([
-                $orderBy =>  \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
+                $orderBy =>  QueryInterface::ORDER_ASCENDING,
             ]);
         }
 

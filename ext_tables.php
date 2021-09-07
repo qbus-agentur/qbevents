@@ -1,5 +1,5 @@
 <?php
-if (!defined('TYPO3_MODE')) {
+if (!defined('TYPO3')) {
     die('Access denied.');
 }
 
@@ -16,23 +16,23 @@ if (!defined('TYPO3_MODE')) {
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    $_EXTKEY,
+    'qbevents',
     'Events',
     'Event Dates'
 );
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['qbevents_events'] = 'pi_flexform';
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
     'qbevents_events',
-    'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/Events.xml'
+    'FILE:EXT:' . 'qbevents' . '/Configuration/FlexForms/Events.xml'
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    $_EXTKEY,
+    'qbevents',
     'EventOverview',
     'Events'
 );
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['qbevents_eventoverview'] = 'pi_flexform';
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
     'qbevents_eventoverview',
-    'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/Overview.xml'
+    'FILE:EXT:' . 'qbevents' . '/Configuration/FlexForms/Overview.xml'
 );
