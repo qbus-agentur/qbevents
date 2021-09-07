@@ -16,6 +16,7 @@
 							<onChange>reload</onChange>
 							<config>
 								<type>select</type>
+								<renderType>selectSingle</renderType>
 								<items>
 									<numIndex index="1">
 										<numIndex index="0">LLL:EXT:qbevents/Resources/Private/Language/locallang_be.xlf:qbevents.flexform.mode.eventlist</numIndex>
@@ -67,6 +68,7 @@
 											<label>Operation</label>
 											<config>
 												<type>select</type>
+												<renderType>selectSingle</renderType>
 												<items type="array">
 													<numIndex index="0" type="array">
 														<numIndex index="0">Equals</numIndex>
@@ -105,6 +107,7 @@
 											<label>Property</label>
 											<config>
 												<type>select</type>
+												<renderType>selectSingle</renderType>
 												<items type="array">
 													<numIndex index="0" type="array">
 														<numIndex index="0">Categories</numIndex>

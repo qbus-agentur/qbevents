@@ -1,6 +1,11 @@
 <?php
 namespace Qbus\Qbevents\Service;
 
+use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
+use Recurr\Rule;
+use Recurr\Transformer\ArrayTransformer;
+use Recurr\Transformer\ArrayTransformerConfig;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Qbus\Qbevents\Domain\Model\EventDate;
 use Qbus\Qbevents\Domain\Repository\EventDateRepository;
 use Recurr\RecurrenceCollection;
@@ -49,7 +54,7 @@ class EventRecurrenceService implements SingletonInterface
      * @param  \TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager $persistenceManager
      * @return void
      */
-    public function injectPersistenceManager(\TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager $persistenceManager)
+    public function injectPersistenceManager(PersistenceManager $persistenceManager)
     {
         $this->persistenceManager = $persistenceManager;
     }
@@ -58,7 +63,7 @@ class EventRecurrenceService implements SingletonInterface
      * @param  \Qbus\Qbevents\Service\ConfigurationService $configurationService
      * @return void
      */
-    public function injectConfigurationService(\Qbus\Qbevents\Service\ConfigurationService $configurationService)
+    public function injectConfigurationService(ConfigurationService $configurationService)
     {
         $this->configurationService = $configurationService;
     }
@@ -147,10 +152,10 @@ class EventRecurrenceService implements SingletonInterface
                 }
             }
 
-            $rule = new \Recurr\Rule($rrule, $startDate, $endDate);
-            $transformer = new \Recurr\Transformer\ArrayTransformer();
+            $rule = new Rule($rrule, $startDate, $endDate);
+            $transformer = new ArrayTransformer();
 
-            $transformerConfig = new \Recurr\Transformer\ArrayTransformerConfig();
+            $transformerConfig = new ArrayTransformerConfig();
             $limit = $this->configurationService->get('recurrence_virtual_limit');
             if ($limit) {
                 $transformerConfig->setVirtualLimit($limit);
@@ -228,7 +233,7 @@ class EventRecurrenceService implements SingletonInterface
     protected function cloneDate(EventDate $date)
     {
         /* @var $subDate EventDate */
-        $subDate = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(EventDate::class);
+        $subDate = GeneralUtility::makeInstance(EventDate::class);
 
         $subDate->setPid($date->getPid());
         $subDate->setFrequency($date->getFrequency());

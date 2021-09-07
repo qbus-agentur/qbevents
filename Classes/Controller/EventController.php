@@ -1,6 +1,13 @@
 <?php
 namespace Qbus\Qbevents\Controller;
 
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Mvc\RequestInterface;
+use TYPO3\CMS\Extbase\Property\Exception\InvalidSourceException;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Frontend\Controller\ErrorController;
+use TYPO3\CMS\Core\Http\ImmediateResponseException;
+use TYPO3\CMS\Extbase\Property\Exception\TargetNotFoundException;
 use Qbus\Qbevents\Domain\Model\Event;
 use Qbus\Qbevents\Domain\Repository\EventRepository;
 
@@ -10,7 +17,7 @@ use Qbus\Qbevents\Domain\Repository\EventRepository;
  * @author Benjamin Franzke <bfr@qbus.de>
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class EventController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class EventController extends ActionController
 {
     /**
      * @var EventRepository
@@ -86,22 +93,26 @@ class EventController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      * @param \TYPO3\CMS\Extbase\Mvc\ResponseInterface $response
      * @throws \Exception|\TYPO3\CMS\Extbase\Property\Exception
      */
-    public function processRequest(\TYPO3\CMS\Extbase\Mvc\RequestInterface $request, \TYPO3\CMS\Extbase\Mvc\ResponseInterface $response)
+    public function processRequest(RequestInterface $request, \TYPO3\CMS\Extbase\Mvc\ResponseInterface $response)
     {
         try {
             parent::processRequest($request, $response);
-        } catch (\TYPO3\CMS\Extbase\Property\Exception\InvalidSourceException $e) {
-            $GLOBALS['TSFE']->pageNotFoundAndExit('Event not found');
-        } catch (\TYPO3\CMS\Extbase\Property\Exception\TargetNotFoundException $e) {
-            $GLOBALS['TSFE']->pageNotFoundAndExit('Event is no longer available', 'HTTP/1.0 410 Gone');
+        } catch (InvalidSourceException $e) {
+            $response = GeneralUtility::makeInstance(ErrorController::class)->pageNotFoundAction($GLOBALS['TYPO3_REQUEST'], 'Event not found');
+            throw new ImmediateResponseException($response);
+        } catch (TargetNotFoundException $e) {
+            $response = GeneralUtility::makeInstance(ErrorController::class)->pageNotFoundAction($GLOBALS['TYPO3_REQUEST'], 'Event is no longer available');
+            throw new ImmediateResponseException($response);
         }
         catch(\TYPO3\CMS\Extbase\Property\Exception $e) {
             $p = $e->getPrevious();
 
-            if ($p instanceof  \TYPO3\CMS\Extbase\Property\Exception\InvalidSourceException && $p->getCode() === 1297931020) {
-                $GLOBALS['TSFE']->pageNotFoundAndExit('Event not found.');
-            } elseif ($p instanceof \TYPO3\CMS\Extbase\Property\Exception\TargetNotFoundException && $p->getCode() === 1297933823) {
-                $GLOBALS['TSFE']->pageNotFoundAndExit('Event is no longer available', 'HTTP/1.0 410 Gone');
+            if ($p instanceof  InvalidSourceException && $p->getCode() === 1297931020) {
+                $response = GeneralUtility::makeInstance(ErrorController::class)->pageNotFoundAction($GLOBALS['TYPO3_REQUEST'], 'Event not found.');
+                throw new ImmediateResponseException($response);
+            } elseif ($p instanceof TargetNotFoundException && $p->getCode() === 1297933823) {
+                $response = GeneralUtility::makeInstance(ErrorController::class)->pageNotFoundAction($GLOBALS['TYPO3_REQUEST'], 'Event is no longer available');
+                throw new ImmediateResponseException($response);
             } else {
                 throw $e;
             }

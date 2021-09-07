@@ -6,9 +6,7 @@ return array(
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
-        'dividers2tabs' => true,
-        'versioningWS' => 2,
-        'versioning_followPages' => true,
+        'versioningWS' => true,
         'languageField' => 'sys_language_uid',
         'transOrigPointerField' => 'l10n_parent',
         'transOrigDiffSourceField' => 'l10n_diffsource',
@@ -21,11 +19,8 @@ return array(
         'searchFields' => 'title,location,teaser,description,dates,image,files,external_url',
         'iconfile' => 'EXT:qbevents/Resources/Public/Icons/tx_qbevents_domain_model_event.svg'
     ),
-    'interface' => array(
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, location, teaser, description, image, files, external_url, dates',
-    ),
     'types' => array(
-        '1' => array('showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, --palette--;;1, title, location, teaser, description, image, files, dates, external_url, --div--;' . (version_compare(TYPO3_branch, '7.4', '>=') ? 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf' : 'LLL:EXT:cms/locallang_ttc.xlf') . ':tabs.access, starttime, endtime'),
+        '1' => array('showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, --palette--;;1, title, location, teaser, description, image, files, dates, external_url, --div--;' . (version_compare(\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Information\Typo3Version::class)->getBranch(), '7.4', '>=') ? 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf' : 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf') . ':tabs.access, starttime, endtime'),
     ),
     'palettes' => array(
         '1' => array('showitem' => ''),
@@ -33,15 +28,15 @@ return array(
     'columns' => array(
         'sys_language_uid' => [
             'exclude' => 1,
-            'label' => (version_compare(TYPO3_branch, '9.5', '>=') ? 'LLL:EXT:core/Resources/Private/Language' : 'LLL:EXT:lang') . '/locallang_general.xlf:LGL.language',
+            'label' => (version_compare(\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Information\Typo3Version::class)->getBranch(), '9.5', '>=') ? 'LLL:EXT:core/Resources/Private/Language' : 'LLL:EXT:lang') . '/locallang_general.xlf:LGL.language',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'foreign_table' => 'sys_language',
                 'foreign_table_where' => 'ORDER BY sys_language.title',
                 'items' => [
-                    [(version_compare(TYPO3_branch, '9.5', '>=') ? 'LLL:EXT:core/Resources/Private/Language' : 'LLL:EXT:lang') . '/locallang_general.xlf:LGL.allLanguages', -1],
-                    [(version_compare(TYPO3_branch, '9.5', '>=') ? 'LLL:EXT:core/Resources/Private/Language' : 'LLL:EXT:lang') . '/locallang_general.xlf:LGL.default_value', 0],
+                    [(version_compare(\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Information\Typo3Version::class)->getBranch(), '9.5', '>=') ? 'LLL:EXT:core/Resources/Private/Language' : 'LLL:EXT:lang') . '/locallang_general.xlf:LGL.allLanguages', -1],
+                    [(version_compare(\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Information\Typo3Version::class)->getBranch(), '9.5', '>=') ? 'LLL:EXT:core/Resources/Private/Language' : 'LLL:EXT:lang') . '/locallang_general.xlf:LGL.default_value', 0],
                 ],
                 'default' => 0,
                 'fieldWizard' => [
@@ -53,8 +48,7 @@ return array(
         ],
         'l10n_parent' => array(
             'displayCond' => 'FIELD:sys_language_uid:>:0',
-            'exclude' => 1,
-            'label' => (version_compare(TYPO3_branch, '9.5', '>=') ? 'LLL:EXT:core/Resources/Private/Language' : 'LLL:EXT:lang') . '/locallang_general.xlf:LGL.l18n_parent',
+            'label' => (version_compare(\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Information\Typo3Version::class)->getBranch(), '9.5', '>=') ? 'LLL:EXT:core/Resources/Private/Language' : 'LLL:EXT:lang') . '/locallang_general.xlf:LGL.l18n_parent',
             'config' => array(
                 'type' => 'select',
                 'renderType' => 'selectSingle',
@@ -71,7 +65,7 @@ return array(
             ),
         ),
         't3ver_label' => array(
-            'label' => (version_compare(TYPO3_branch, '9.5', '>=') ? 'LLL:EXT:core/Resources/Private/Language' : 'LLL:EXT:lang') . '/locallang_general.xlf:LGL.versionLabel',
+            'label' => (version_compare(\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Information\Typo3Version::class)->getBranch(), '9.5', '>=') ? 'LLL:EXT:core/Resources/Private/Language' : 'LLL:EXT:lang') . '/locallang_general.xlf:LGL.versionLabel',
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
@@ -79,7 +73,7 @@ return array(
             )
         ),
         'hidden' => (
-            version_compare(TYPO3_branch, '9.5', '>=') ?
+            version_compare(\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Information\Typo3Version::class)->getBranch(), '9.5', '>=') ?
             [
                 'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.enabled',
                 'exclude' => true,
@@ -98,7 +92,7 @@ return array(
             ]
             :
             [
-                'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
+                'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.hidden',
                 'exclude' => true,
                 'config' => [
                     'type' => 'check',
@@ -107,34 +101,34 @@ return array(
         ),
         'starttime' => array(
             'exclude' => 1,
-            'l10n_mode' => 'mergeIfNotBlank',
-            'label' => (version_compare(TYPO3_branch, '9.5', '>=') ? 'LLL:EXT:core/Resources/Private/Language' : 'LLL:EXT:lang') . '/locallang_general.xlf:LGL.starttime',
+            'label' => (version_compare(\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Information\Typo3Version::class)->getBranch(), '9.5', '>=') ? 'LLL:EXT:core/Resources/Private/Language' : 'LLL:EXT:lang') . '/locallang_general.xlf:LGL.starttime',
             'config' => array(
                 'type' => 'input',
                 'size' => 13,
-                'max' => 20,
                 'eval' => 'datetime,int',
                 'checkbox' => 0,
                 'default' => 0,
                 'range' => array(
                     'lower' => mktime(0, 0, 0, (int)date('m'), (int)date('d'), (int)date('Y'))
                 ),
+                'renderType' => 'inputDateTime',
+                ['behaviour' => ['allowLanguageSynchronization' => true]],
             ),
         ),
         'endtime' => array(
             'exclude' => 1,
-            'l10n_mode' => 'mergeIfNotBlank',
-            'label' => (version_compare(TYPO3_branch, '9.5', '>=') ? 'LLL:EXT:core/Resources/Private/Language' : 'LLL:EXT:lang') . '/locallang_general.xlf:LGL.endtime',
+            'label' => (version_compare(\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Information\Typo3Version::class)->getBranch(), '9.5', '>=') ? 'LLL:EXT:core/Resources/Private/Language' : 'LLL:EXT:lang') . '/locallang_general.xlf:LGL.endtime',
             'config' => array(
                 'type' => 'input',
                 'size' => 13,
-                'max' => 20,
                 'eval' => 'datetime,int',
                 'checkbox' => 0,
                 'default' => 0,
                 'range' => array(
                     'lower' => mktime(0, 0, 0, (int)date('m'), (int)date('d'), (int)date('Y'))
                 ),
+                'renderType' => 'inputDateTime',
+                ['behaviour' => ['allowLanguageSynchronization' => true]],
             ),
         ),
         'title' => array(
@@ -162,9 +156,10 @@ return array(
                 'type' => 'text',
                 'cols' => 40,
                 'rows' => 15,
-                'eval' => 'trim'
+                'eval' => 'trim',
+                'enableRichtext' => true,
+                'richtextConfiguration' => 'default'
             ),
-            'defaultExtras' => 'richtext[]:rte_transform[mode=ts_css]',
         ),
         'description' => array(
             'exclude' => 1,
@@ -173,9 +168,10 @@ return array(
                 'type' => 'text',
                 'cols' => 40,
                 'rows' => 15,
-                'eval' => 'trim'
+                'eval' => 'trim',
+                'enableRichtext' => true,
+                'richtextConfiguration' => 'default'
             ),
-            'defaultExtras' => 'richtext[]:rte_transform[mode=ts_css]',
         ),
         'image' => array(
             'exclude' => 1,
@@ -184,41 +180,41 @@ return array(
                 'image',
                 array(
                     'appearance' => array(
-                        'createNewRelationLinkTitle' => (version_compare(TYPO3_branch, '7.4', '>=') ? 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf' : 'LLL:EXT:cms/locallang_ttc.xlf') . ':images.addFileReference'
+                        'createNewRelationLinkTitle' => (version_compare(\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Information\Typo3Version::class)->getBranch(), '7.4', '>=') ? 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf' : 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf') . ':images.addFileReference'
                     ),
-                    'foreign_types' => array(
+                    'maxitems' => 1,
+                    'overrideChildTca' => ['types' => array(
                         '0' => array(
                             'showitem' => '
-							--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+							--palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
 							--palette--;;filePalette'
                         ),
                         \TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => array(
                             'showitem' => '
-							--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+							--palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
 							--palette--;;filePalette'
                         ),
                         \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => array(
                             'showitem' => '
-							--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+							--palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
 							--palette--;;filePalette'
                         ),
                         \TYPO3\CMS\Core\Resource\File::FILETYPE_AUDIO => array(
                             'showitem' => '
-							--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+							--palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
 							--palette--;;filePalette'
                         ),
                         \TYPO3\CMS\Core\Resource\File::FILETYPE_VIDEO => array(
                             'showitem' => '
-							--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+							--palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
 							--palette--;;filePalette'
                         ),
                         \TYPO3\CMS\Core\Resource\File::FILETYPE_APPLICATION => array(
                             'showitem' => '
-							--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+							--palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
 							--palette--;;filePalette'
                         )
-                    ),
-                    'maxitems' => 1
+                    )]
                 ),
                 $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
             ),

@@ -27,8 +27,8 @@ class ConfigurationService implements SingletonInterface
     {
         if (class_exists(ExtensionConfiguration::class)) {
             $this->configuration = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('qbevents');
-        } elseif (isset($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['qbevents'])) {
-            $extensionConfig = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['qbevents']);
+        } elseif (isset($GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['qbevents'])) {
+            $extensionConfig = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('qbevents');
             if (is_array($extensionConfig)) {
                 $this->configuration = $extensionConfig;
             }

@@ -1,31 +1,31 @@
 <?php
-if (!defined('TYPO3_MODE')) {
+if (!defined('TYPO3')) {
     die('Access denied.');
 }
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-    'Qbus.' . $_EXTKEY,
+    'Qbevents',
     'Events',
     array(
-        'EventDate' => 'list, show, teaser, calendar',
+        \Qbus\Qbevents\Controller\EventDateController::class => 'list, show, teaser, calendar',
 
     ),
     // non-cacheable actions
     array(
-        'EventDate' => 'list, teaser, calendar',
+        \Qbus\Qbevents\Controller\EventDateController::class => 'list, teaser, calendar',
     )
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-    'Qbus.' . $_EXTKEY,
+    'Qbevents',
     'EventOverview',
     array(
-        'Event' => 'list, show',
+        \Qbus\Qbevents\Controller\EventController::class => 'list, show',
 
     ),
     // non-cacheable actions
     array(
-        'Event' => 'list, show',
+        \Qbus\Qbevents\Controller\EventController::class => 'list, show',
     )
 );
 
