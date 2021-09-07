@@ -16,6 +16,7 @@
 							<onChange>reload</onChange>
 							<config>
 								<type>select</type>
+								<renderType>selectSingle</renderType>
 								<items>
 									<numIndex index="1">
 										<numIndex index="0">LLL:EXT:qbevents/Resources/Private/Language/locallang_be.xlf:qbevents.flexform.mode.eventlistAndDetail</numIndex>
@@ -29,7 +30,7 @@
 							</config>
 						</TCEforms>
 					</switchableControllerActions>
-
+					
 					<settings.template>
 						<TCEforms>
 							<label>Template (EXT:your_extension/..../Foo.html)</label>
@@ -93,7 +94,7 @@
 							</demand>
 						</el>
 					</settings.demands>
-
+					
 					<settings.record>
 						<TCEforms>
 							<label>LLL:EXT:qbevents/Resources/Private/Language/locallang_be.xlf:qbevents.flexform.record</label>

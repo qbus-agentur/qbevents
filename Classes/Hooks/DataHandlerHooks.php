@@ -1,6 +1,9 @@
 <?php
 namespace Qbus\Qbevents\Hooks;
 
+use Qbus\Qbevents\Service\EventRecurrenceService;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 
 /**
@@ -100,7 +103,7 @@ class DataHandlerHooks
      */
     protected function getEventRecurrenceService()
     {
-        return $this->getExtbaseObjectManager()->get(\Qbus\Qbevents\Service\EventRecurrenceService::class);
+        return $this->getExtbaseObjectManager()->get(EventRecurrenceService::class);
     }
 
     /**
@@ -108,6 +111,6 @@ class DataHandlerHooks
      */
     protected function getExtbaseObjectManager()
     {
-        return \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\ObjectManager::class);
+        return GeneralUtility::makeInstance(ObjectManager::class);
     }
 }

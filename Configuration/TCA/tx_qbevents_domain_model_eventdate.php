@@ -9,9 +9,7 @@ return array(
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
-        'dividers2tabs' => true,
-        'versioningWS' => 2,
-        'versioning_followPages' => true,
+        'versioningWS' => true,
         'delete' => 'deleted',
         'enablecolumns' => array(
             'disabled' => 'hidden',
@@ -21,15 +19,12 @@ return array(
         'searchFields' => 'start,end,is_full_day,frequency,frequency_count,frequency_until',
         'iconfile' => 'EXT:qbevents/Resources/Public/Icons/tx_qbevents_domain_model_eventdate.svg'
     ),
-    'interface' => array(
-        'showRecordFieldList' => 'hidden, start, end, is_full_day, frequency, frequency_count, frequency_until, frequency_weekdays',
-    ),
     'types' => array(
-        '0' => array('showitem' => '--palette--;;date, --palette--;;basic, --palette--;;hidden'),
-        '1' => array('showitem' => '--palette--;;date, --palette--;;basic,--palette--;LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.palette.recurrence;recurrence, --palette--;;hidden'),
-        '2' => array('showitem' => '--palette--;;date, --palette--;;basic,--palette--;LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.palette.recurrence;recurrence, --palette--;;hidden'),
-        '3' => array('showitem' => '--palette--;;date, --palette--;;basic,--palette--;LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.palette.recurrence;recurrence, --palette--;;weekly, --palette--;;hidden'),
-        '4' => array('showitem' => '--palette--;;date, --palette--;;basic,--palette--;LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.palette.recurrence;recurrence, --palette--;;hidden'),
+        '0' => array('showitem' => '--palette--;;date,--palette--;;basic,--palette--;;hidden'),
+        '1' => array('showitem' => '--palette--;;date,--palette--;;basic,--palette--;LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.palette.recurrence;recurrence,--palette--;;hidden'),
+        '2' => array('showitem' => '--palette--;;date,--palette--;;basic,--palette--;LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.palette.recurrence;recurrence,--palette--;;hidden'),
+        '3' => array('showitem' => '--palette--;;date,--palette--;;basic,--palette--;LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.palette.recurrence;recurrence,--palette--;;weekly,--palette--;;hidden'),
+        '4' => array('showitem' => '--palette--;;date,--palette--;;basic,--palette--;LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.palette.recurrence;recurrence,--palette--;;hidden'),
     ),
     'palettes' => array(
         '1' => array('showitem' => ''),
@@ -41,7 +36,7 @@ return array(
     ),
     'columns' => array(
         't3ver_label' => array(
-            'label' => (version_compare(TYPO3_branch, '9.5', '>=') ? 'LLL:EXT:core/Resources/Private/Language' : 'LLL:EXT:lang') . '/locallang_general.xlf:LGL.versionLabel',
+            'label' => (version_compare(\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Information\Typo3Version::class)->getBranch(), '9.5', '>=') ? 'LLL:EXT:core/Resources/Private/Language' : 'LLL:EXT:lang') . '/locallang_general.xlf:LGL.versionLabel',
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
@@ -49,7 +44,7 @@ return array(
             )
         ),
         'hidden' => (
-            version_compare(TYPO3_branch, '9.5', '>=') ?
+            version_compare(\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Information\Typo3Version::class)->getBranch(), '9.5', '>=') ?
             [
                 'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.enabled',
                 'exclude' => true,
@@ -68,7 +63,7 @@ return array(
             ]
             :
             [
-                'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
+                'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.hidden',
                 'exclude' => true,
                 'config' => [
                     'type' => 'check',
@@ -82,7 +77,8 @@ return array(
                 'type' => 'input',
                 'size' => 12,
                 'checkbox' => 0,
-                'eval' => 'datetime,int'
+                'eval' => 'datetime,int',
+                'renderType' => 'inputDateTime'
             ),
         ),
         'end' => array(
@@ -92,7 +88,8 @@ return array(
                 'type' => 'input',
                 'size' => 12,
                 'checkbox' => 0,
-                'eval' => 'datetime,int'
+                'eval' => 'datetime,int',
+                'renderType' => 'inputDateTime'
             ),
         ),
         'is_full_day' => array(
@@ -165,7 +162,8 @@ return array(
                 'type' => 'input',
                 'size' => 12,
                 'checkbox' => 1,
-                'eval' => 'datetime,int'
+                'eval' => 'datetime,int',
+                'renderType' => 'inputDateTime'
             ),
         ),
         'frequency_weekdays' => array(

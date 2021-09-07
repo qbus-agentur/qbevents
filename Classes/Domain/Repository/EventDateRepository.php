@@ -1,6 +1,7 @@
 <?php
 namespace Qbus\Qbevents\Domain\Repository;
 
+use TYPO3\CMS\Extbase\Persistence\Repository;
 use Qbus\Qbevents\Utility\DemandsUtility;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
@@ -12,13 +13,13 @@ use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
  * @author Benjamin Franzke <bfr@qbus.de>
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class EventDateRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+class EventDateRepository extends Repository
 {
     /**
      * @var array
      */
     protected $defaultOrderings = [
-        'start' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
+        'start' => QueryInterface::ORDER_ASCENDING,
     ];
 
     /**
