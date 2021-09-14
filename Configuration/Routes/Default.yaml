@@ -1,0 +1,21 @@
+routeEnhancers:
+  EventPlugin:
+    type: Extbase
+    extension: Qbevents
+    plugin: Events
+    routes:
+      - { routePath: '/event/show/{date}', _controller: 'EventDate::show', _arguments: {'date': 'date'} }
+      - { routePath: '/event/next/{event}', _controller: 'EventDate::show', _arguments: {'event': 'event'} }
+    aspects:
+      date:
+        type: PersistedAliasMapper
+        tableName: tx_qbevents_domain_model_eventdate
+        routeFieldName: uid
+      event:
+        type: PersistedAliasMapper
+        tableName: tx_qbevents_domain_model_event
+        routeFieldName: uid
+    defaultController: 'EventDate::list'
+
+imports:
+   - { resource: "EXT:qbevents_dbknb/Configuration/Routes/API.yaml" }
