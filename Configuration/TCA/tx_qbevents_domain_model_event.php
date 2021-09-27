@@ -104,12 +104,8 @@ return array(
             'label' => (version_compare(\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Information\Typo3Version::class)->getBranch(), '9.5', '>=') ? 'LLL:EXT:core/Resources/Private/Language' : 'LLL:EXT:lang') . '/locallang_general.xlf:LGL.starttime',
             'config' => array(
                 'type' => 'input',
-                'size' => 13,
                 'eval' => 'datetime,int',
                 'default' => 0,
-                'range' => array(
-                    'lower' => mktime(0, 0, 0, (int)date('m'), (int)date('d'), (int)date('Y'))
-                ),
                 'renderType' => 'inputDateTime',
                 ['behaviour' => ['allowLanguageSynchronization' => true]],
             ),
@@ -119,12 +115,11 @@ return array(
             'label' => (version_compare(\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Information\Typo3Version::class)->getBranch(), '9.5', '>=') ? 'LLL:EXT:core/Resources/Private/Language' : 'LLL:EXT:lang') . '/locallang_general.xlf:LGL.endtime',
             'config' => array(
                 'type' => 'input',
-                'size' => 13,
                 'eval' => 'datetime,int',
                 'default' => 0,
-                'range' => array(
-                    'lower' => mktime(0, 0, 0, (int)date('m'), (int)date('d'), (int)date('Y'))
-                ),
+                'range' => [
+                    'upper' => mktime(0, 0, 0, 1, 1, 2038)
+                ],
                 'renderType' => 'inputDateTime',
                 ['behaviour' => ['allowLanguageSynchronization' => true]],
             ),
