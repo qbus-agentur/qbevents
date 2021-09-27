@@ -161,7 +161,7 @@ return array(
             'config' => array(
                 'type' => 'input',
                 'size' => 12,
-                'checkbox' => 1,
+                'checkbox' => 0,
                 'eval' => 'datetime,int',
                 'renderType' => 'inputDateTime'
             ),
