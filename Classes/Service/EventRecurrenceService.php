@@ -108,6 +108,7 @@ class EventRecurrenceService implements SingletonInterface
      */
     public function updateRecurrences($eventDateUid)
     {
+        // @todo: Fix repository to deliver hidden relations (like a hidden event relation)
         $date = $this->eventDateRepository->findByUid($eventDateUid);
         if (!$date) {
             /* Do not update hidden records – they'll be updated when the are activated again */
