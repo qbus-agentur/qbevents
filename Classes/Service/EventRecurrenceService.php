@@ -188,6 +188,8 @@ class EventRecurrenceService implements SingletonInterface
             foreach ($oldDates as $eKey => $old) {
                 if ($old->getStart() == $start && $old->getEnd() == $end) {
                     $old->setIsFullDay($date->getIsFullDay());
+                    $old->setEvent($date->getEvent());
+                    $old->setPid($date->getPid());
                     $this->eventDateRepository->update($old);
 
                     unset($oldDates[$eKey]);
