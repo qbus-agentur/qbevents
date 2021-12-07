@@ -10,6 +10,7 @@ use TYPO3\CMS\Extbase\Mvc\Request;
 use Qbus\Qbevents\Domain\Model\Event;
 use Qbus\Qbevents\Domain\Model\EventDate;
 use Qbus\Qbevents\Domain\Repository\EventDateRepository;
+use TYPO3\CMS\Frontend\Page\PageAccessFailureReasons;
 
 /**
  * EventDateController
@@ -134,7 +135,7 @@ class EventDateController extends ActionController
                 }
             }
             if (!$redirect_to) {
-                $response = GeneralUtility::makeInstance(ErrorController::class)->pageNotFoundAction($GLOBALS['TYPO3_REQUEST'], 'Event not found.');
+                $response = GeneralUtility::makeInstance(ErrorController::class)->pageNotFoundAction($GLOBALS['TYPO3_REQUEST'], 'Event not found.', ['code' => PageAccessFailureReasons::PAGE_NOT_FOUND]);
                 throw new ImmediateResponseException($response);
                 exit;
             }
@@ -148,7 +149,7 @@ class EventDateController extends ActionController
 
         /* ->event may be hidden, return 404 in that case */
         if ($date === null || $date->getEvent() == null) {
-            $response = GeneralUtility::makeInstance(ErrorController::class)->pageNotFoundAction($GLOBALS['TYPO3_REQUEST'], 'Event not found.');
+            $response = GeneralUtility::makeInstance(ErrorController::class)->pageNotFoundAction($GLOBALS['TYPO3_REQUEST'], 'Event not found.', ['code' => PageAccessFailureReasons::PAGE_NOT_FOUND]);
             throw new ImmediateResponseException($response);
         }
 
