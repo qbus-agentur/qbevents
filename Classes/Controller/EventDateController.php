@@ -28,20 +28,9 @@ class EventDateController extends ActionController
      */
     protected $eventDateRepository;
 
-    /**
-     * @var ResponseFactoryInterface
-     */
-    protected $responseFactory;
-
     public function injectEventDateRepository(EventDateRepository $eventDateRepository)
     {
         $this->eventDateRepository = $eventDateRepository;
-    }
-
-
-    public function injectResponseFactory(ResponseFactoryInterface $responseFactory)
-    {
-        $this->responseFactory = $responseFactory;
     }
 
     /**
