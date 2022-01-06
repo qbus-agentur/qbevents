@@ -101,7 +101,6 @@ class EventDateController extends ActionController
             $currentPage = $this->request->hasArgument('currentPage') ? (int)$this->request->getArgument('currentPage') : 1;
             $paginator = GeneralUtility::makeInstance(QueryResultPaginator::class, $dates, $currentPage, $eventsPerPage);
             $pagination = GeneralUtility::makeInstance($paginationClass, $paginator, ...$paginationClassArgs);
-            \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump('foo');
 
             $variables['pagination'] = [
                 'currentPage' => $currentPage,
