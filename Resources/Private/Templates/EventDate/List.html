@@ -10,9 +10,9 @@
 
 	<f:if condition="{settings.events_per_page}">
 		<f:then>
-			<f:widget.paginate objects="{dates}" as="paginatedDates" configuration="{itemsPerPage: settings.events_per_page, insertAbove: 1, insertBelow: 1}">
-				<f:render section="list" arguments="{dates: paginatedDates}"/>
-			</f:widget.paginate>
+			<f:render partial="Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator}" />
+			<f:render section="list" arguments="{dates: pagination.paginator.paginatedItems}"/>
+			<f:render partial="Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator}" />
 		</f:then>
 		<f:else>
 			<f:render section="list" arguments="{dates: dates}"/>

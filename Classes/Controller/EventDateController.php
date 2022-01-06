@@ -4,10 +4,12 @@ namespace Qbus\Qbevents\Controller;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
+use TYPO3\CMS\Core\Pagination\SimplePagination;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\Controller\ErrorController;
 use TYPO3\CMS\Core\Http\ImmediateResponseException;
 use TYPO3\CMS\Extbase\Mvc\Request;
+use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 use Qbus\Qbevents\Domain\Model\Event;
 use Qbus\Qbevents\Domain\Model\EventDate;
 use Qbus\Qbevents\Domain\Repository\EventDateRepository;
@@ -90,6 +92,24 @@ class EventDateController extends ActionController
             'demands' => $demands,
             'extended' => [],
         ];
+
+        $eventsPerPage = $this->settings['events_per_page'] ?? 0;
+        if ($eventsPerPage) {
+            $paginationClass = $this->settings['pagination_class'] ?? SimplePagination::class;
+            $paginationClassArgs = $this->settings['pagination_class_args'] ?? [];
+
+            $currentPage = $this->request->hasArgument('currentPage') ? (int)$this->request->getArgument('currentPage') : 1;
+            $paginator = GeneralUtility::makeInstance(QueryResultPaginator::class, $dates, $currentPage, $eventsPerPage);
+            $pagination = GeneralUtility::makeInstance($paginationClass, $paginator, ...$paginationClassArgs);
+            \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump('foo');
+
+            $variables['pagination'] = [
+                'currentPage' => $currentPage,
+                'paginator' => $paginator,
+                'pagination' => $pagination,
+            ];
+        }
+
         $variables = $this->signalSlotDispatcher->dispatch(__CLASS__, 'listAction_variables', $variables);
 
         $this->view->assignMultiple($variables);
