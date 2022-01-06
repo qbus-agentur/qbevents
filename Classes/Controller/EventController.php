@@ -45,7 +45,10 @@ class EventController extends ActionController
             $orderby = $this->settings['orderby'];
         }
 
-        $demands = $this->settings['demands'];
+        $demands = [];
+        if (isset($this->settings['demands']) && is_array($this->settings['demands']) && count($this->settings['demands']) > 0) {
+            $demands = $this->settings['demands'];
+        }
         $limit = isset($this->settings['demands_limit']) ? $this->settings['demands_limit'] : 0;
 
         if ($findUpcoming) {
