@@ -20,7 +20,7 @@
     ],
     "license": "GPL-2.0+",
     "require": {
-        "typo3/cms-core": "^10.4",
+        "typo3/cms-core": "^11.5",
 	"eluceo/ical": "0.11.*",
 	"simshaun/recurr": "0.6.1"
     },
