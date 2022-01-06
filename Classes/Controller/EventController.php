@@ -1,6 +1,7 @@
 <?php
 namespace Qbus\Qbevents\Controller;
 
+use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Pagination\SimplePagination;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Mvc\RequestInterface;
@@ -115,10 +116,10 @@ class EventController extends ActionController
      * @param \TYPO3\CMS\Extbase\Mvc\ResponseInterface $response
      * @throws \Exception|\TYPO3\CMS\Extbase\Property\Exception
      */
-    public function processRequest(RequestInterface $request, \TYPO3\CMS\Extbase\Mvc\ResponseInterface $response)
+    public function processRequest(RequestInterface $request): ResponseInterface
     {
         try {
-            parent::processRequest($request, $response);
+            return parent::processRequest($request);
         } catch (InvalidSourceException $e) {
             $response = GeneralUtility::makeInstance(ErrorController::class)->pageNotFoundAction($GLOBALS['TYPO3_REQUEST'], 'Event not found');
             throw new ImmediateResponseException($response);
