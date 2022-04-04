@@ -59,7 +59,7 @@ class EventDateRepository extends Repository
      * @param bool $returnRawQueryResult
      * @return QueryResultInterface|array
      */
-    public function find($demands = array(), $limit = 0, $returnRawQueryResult = false)
+    public function find($demands = array(), $limit = 0, $returnRawQueryResult = false, $conjunction = 'AND')
     {
         $query = $this->createQuery();
 

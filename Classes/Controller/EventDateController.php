@@ -252,6 +252,16 @@ class EventDateController extends ActionController
         $prev = clone $end;
         $prev->modify('first day of last month');
 
+        if (!$this->hasEventsOrAnySuccessive($next, true)) {
+            $next = null;
+        }
+
+        $prevLastDay = clone $prev;
+        $prevLastDay->modify('last day of this month');
+        if (!$this->hasEventsOrAnySuccessive($prevLastDay, false)) {
+            $prev = null;
+        }
+
         $this->view->assign('month', $start);
         $this->view->assign('prev', $prev);
         $this->view->assign('next', $next);
@@ -267,32 +277,103 @@ class EventDateController extends ActionController
         return ceil(($date->format('d') + $offset)/7);
     }
 
-    protected function collectCalendarData(\DateTime $start, \DateTime $end)
+    protected function hasEventsOrAnySuccessive(\DateTime $date, bool $later = true)
     {
         $demands = [
             [
                 'demand' => [
-                    'operation' => 'GREATERTHANOREQUAL',
+                    'operation' => $later ? 'GREATERTHANOREQUAL' : 'LESSTHANOREQUAL',
                     'property' => 'start',
-                    'value' => $start,
-                ]
+                    'value' => $date,
+                ],
             ],
             [
                 'demand' => [
-                    'operation' => 'LESSTHANOREQUAL',
-                    'property' => 'end',
-                    'value' => $end,
-                ]
+                    'operation' => 'GREATERTHAN',
+                    'property' => 'start',
+                    'value' => 0,
+                ],
             ],
             [
                 'demand' => [
                     'operation' => 'EQUALS',
                     'property' => 'frequency',
                     'value' => '0',
-                ]
+                ],
             ],
         ];
         $dates = $this->eventDateRepository->find($demands);
+        return count($dates) > 0;
+    }
+
+    protected function collectCalendarData(\DateTime $start, \DateTime $end)
+    {
+        $demands = [
+            [
+                'demand' => [
+                    'operation' => 'AND',
+                    'operands' => [
+                        [
+                            'demand' => [
+                                'operation' => 'GREATERTHANOREQUAL',
+                                'property' => 'start',
+                                'value' => $start,
+                            ]
+                        ],
+                        [
+                            'demand' => [
+                                'operation' => 'LESSTHANOREQUAL',
+                                'property' => 'start',
+                                'value' => $end,
+                            ]
+                        ],
+                        [
+                            'demand' => [
+                                'operation' => 'EQUALS',
+                                'property' => 'frequency',
+                                'value' => '0',
+                            ]
+                        ],
+                    ],
+                ],
+            ],
+            [
+                'demand' => [
+                    'operation' => 'AND',
+                    'operands' => [
+                        [
+                            'demand' => [
+                                'operation' => 'GREATERTHANOREQUAL',
+                                'property' => 'start',
+                                'value' => $start,
+                            ]
+                        ],
+                        [
+                            'demand' => [
+                                'operation' => 'LESSTHANOREQUAL',
+                                'property' => 'end',
+                                'value' => $end,
+                            ]
+                        ],
+                        [
+                            'demand' => [
+                                'operation' => 'GREATHERTHAN',
+                                'property' => 'end',
+                                'value' => 0,
+                            ]
+                        ],
+                        [
+                            'demand' => [
+                                'operation' => 'EQUALS',
+                                'property' => 'frequency',
+                                'value' => '0',
+                            ]
+                        ],
+                    ],
+                ],
+            ],
+        ];
+        $dates = $this->eventDateRepository->find($demands, 0, false, 'OR');
         $weeks = [
         ];
 
