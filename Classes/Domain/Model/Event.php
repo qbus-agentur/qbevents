@@ -62,7 +62,7 @@ class Event extends AbstractEntity
     /**
      * categories
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<Category>
      * @Lazy
      * @Extbase\ORM\Lazy
      */
@@ -264,7 +264,7 @@ class Event extends AbstractEntity
     /**
      * Returns the categories
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category> $categories
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<Category> $categories
      */
     public function getCategories()
     {
@@ -274,7 +274,7 @@ class Event extends AbstractEntity
     /**
      * Sets the categories
      *
-     * @param  \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category> $categories
+     * @param  \TYPO3\CMS\Extbase\Persistence\ObjectStorage<Category> $categories
      * @return void
      */
     public function setCategories($categories)

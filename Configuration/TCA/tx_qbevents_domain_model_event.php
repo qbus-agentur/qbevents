@@ -20,7 +20,7 @@ return array(
         'iconfile' => 'EXT:qbevents/Resources/Public/Icons/tx_qbevents_domain_model_event.svg'
     ),
     'types' => array(
-        '1' => array('showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, --palette--;;1, title, location, teaser, description, image, files, dates, external_url, --div--;' . (version_compare(\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Information\Typo3Version::class)->getBranch(), '7.4', '>=') ? 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf' : 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf') . ':tabs.access, starttime, endtime'),
+        '1' => array('showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, --palette--;;1, title, location, teaser, description, image, files, dates, external_url, categories, --div--;' . (version_compare(\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Information\Typo3Version::class)->getBranch(), '7.4', '>=') ? 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf' : 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf') . ':tabs.access, starttime, endtime'),
     ),
     'palettes' => array(
         '1' => array('showitem' => ''),
@@ -234,6 +234,11 @@ return array(
                 ],
                 'eval' => ''
             ),
+        ),
+        'categories' => array(
+            'config' => [
+                'type' => 'category'
+            ]
         ),
         'files' => array(
             'exclude' => 1,
