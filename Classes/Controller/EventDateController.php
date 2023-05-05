@@ -156,7 +156,7 @@ class EventDateController extends ActionController
                 exit;
             }
 
-            $uri = $this->uriBuilder->reset()->setUseCacheHash(true)->uriFor('show', ['date' => $redirect_to], null, null, null);
+            $uri = $this->uriBuilder->reset()->uriFor('show', ['date' => $redirect_to], null, null, null);
 
             header('HTTP/1.1 303 See Other');
             header("Location: $uri");
@@ -334,7 +334,7 @@ class EventDateController extends ActionController
     protected function redirectIfPost($arguments = array(), $action = null)
     {
         if ($this->request instanceof Request && $this->request->getMethod() === 'POST') {
-            $uri = $this->uriBuilder->reset()->setUseCacheHash(false)->uriFor($action, $arguments, null, null, null);
+            $uri = $this->uriBuilder->reset()->uriFor($action, $arguments, null, null, null);
 
             header('HTTP/1.1 303 See Other');
             header("Location: $uri");
