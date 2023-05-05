@@ -1,9 +1,8 @@
 <?php
 namespace Qbus\Qbevents\Hooks;
 
+use Psr\Container\ContainerInterface;
 use Qbus\Qbevents\Service\EventRecurrenceService;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 
 /**
@@ -16,12 +15,20 @@ class DataHandlerHooks
 {
     const EVENTDATE_TABLE = 'tx_qbevents_domain_model_eventdate';
 
+    private ContainerInterface $container;
+
     /**
      * Array that holds deferred id's deferred to be processed after all operations
      *
      * @var array
      */
-    static protected $deferred = array();
+    private $deferred = array();
+
+    public function __construct(
+        ContainerInterface $container
+    ) {
+        $this->container = $container;
+    }
 
     /**
      * @param  DataHandler $dataHandler
@@ -29,12 +36,12 @@ class DataHandlerHooks
      */
     public function processDatamap_afterAllOperations(/*DataHandler $dataHandler*/)
     {
-        if (count(self::$deferred) > 0) {
-            foreach (self::$deferred as $uid) {
+        if (count($this->deferred) > 0) {
+            foreach ($this->deferred as $uid) {
                 $this->getEventRecurrenceService()->updateRecurrences($uid);
             }
         }
-        self::$deferred = [];
+        $this->deferred = [];
     }
 
     /**
@@ -64,7 +71,7 @@ class DataHandlerHooks
            the DataHandlers remapStack phase */
         if ($status === 'new') {
             $id = $dataHandler->substNEWwithIDs[$id];
-            self::$deferred[] = $id;
+            $this->deferred[] = $id;
             return;
 
         }
@@ -98,19 +105,8 @@ class DataHandlerHooks
         }
     }
 
-    /**
-     * @return \Qbus\Qbevents\Service\EventRecurrenceService
-     */
-    protected function getEventRecurrenceService()
+    protected function getEventRecurrenceService(): EventRecurrenceService
     {
-        return $this->getExtbaseObjectManager()->get(EventRecurrenceService::class);
-    }
-
-    /**
-     * @return \TYPO3\CMS\Extbase\Object\ObjectManager
-     */
-    protected function getExtbaseObjectManager()
-    {
-        return GeneralUtility::makeInstance(ObjectManager::class);
+        return $this->container->get(EventRecurrenceService::class);
     }
 }

@@ -6,3 +6,9 @@ services:
 
   Qbus\Qbevents\:
     resource: '../Classes/*'
+
+  Qbus\Qbevents\Hooks\DataHandlerHooks:
+    public: true
+
+  Qbus\Qbevents\Service\EventRecurrenceService:
+    public: true

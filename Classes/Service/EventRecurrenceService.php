@@ -9,7 +9,6 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Qbus\Qbevents\Domain\Model\EventDate;
 use Qbus\Qbevents\Domain\Repository\EventDateRepository;
 use Recurr\RecurrenceCollection;
-use TYPO3\CMS\Core\SingletonInterface;
 
 /**
  * EventRecurrenceService
@@ -17,7 +16,7 @@ use TYPO3\CMS\Core\SingletonInterface;
  * @author Benjamin Franzke <bfr@qbus.de>
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class EventRecurrenceService implements SingletonInterface
+class EventRecurrenceService
 {
     public static $freqs = array(
         1 => 'YEARLY',
