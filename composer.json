@@ -20,13 +20,13 @@
     ],
     "license": "GPL-2.0+",
     "require": {
-        "typo3/cms-core": "^11.5",
+        "typo3/cms-core": "^11.5 || ^12.4",
 	"psr/container": "^1.0 || ^2.0",
 	"eluceo/ical": "0.11.*",
 	"simshaun/recurr": "0.6.1"
     },
     "require-dev": {
-        "typo3/testing-framework": "^6.6"
+        "typo3/testing-framework": "^7 || ^8"
     },
     "autoload": {
         "psr-4": {
