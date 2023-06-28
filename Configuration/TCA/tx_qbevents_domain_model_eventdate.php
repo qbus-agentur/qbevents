@@ -20,11 +20,11 @@ return array(
         'iconfile' => 'EXT:qbevents/Resources/Public/Icons/tx_qbevents_domain_model_eventdate.svg'
     ),
     'types' => array(
-        '0' => array('showitem' => '--palette--;;date,--palette--;;basic,--palette--;;hidden'),
-        '1' => array('showitem' => '--palette--;;date,--palette--;;basic,--palette--;LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.palette.recurrence;recurrence,--palette--;;hidden'),
-        '2' => array('showitem' => '--palette--;;date,--palette--;;basic,--palette--;LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.palette.recurrence;recurrence,--palette--;;hidden'),
-        '3' => array('showitem' => '--palette--;;date,--palette--;;basic,--palette--;LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.palette.recurrence;recurrence,--palette--;;weekly,--palette--;;hidden'),
-        '4' => array('showitem' => '--palette--;;date,--palette--;;basic,--palette--;LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.palette.recurrence;recurrence,--palette--;;hidden'),
+        '0' => array('showitem' => '--palette--;;date,--palette--;;basic'),
+        '1' => array('showitem' => '--palette--;;date,--palette--;;basic,--palette--;LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.palette.recurrence;recurrence'),
+        '2' => array('showitem' => '--palette--;;date,--palette--;;basic,--palette--;LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.palette.recurrence;recurrence'),
+        '3' => array('showitem' => '--palette--;;date,--palette--;;basic,--palette--;LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.palette.recurrence;recurrence,--palette--;;weekly'),
+        '4' => array('showitem' => '--palette--;;date,--palette--;;basic,--palette--;LLL:EXT:qbevents/Resources/Private/Language/locallang_db.xlf:tx_qbevents_domain_model_eventdate.palette.recurrence;recurrence'),
     ),
     'palettes' => array(
         '1' => array('showitem' => ''),
@@ -32,7 +32,6 @@ return array(
         'date' => array('showitem' => 'start, end', 'canNotCollapse' => 1),
         'recurrence' => array('showitem' => 'frequency_until, frequency_count', 'canNotCollapse' => 1),
         'weekly' => array('showitem' => 'frequency_weekdays', 'canNotCollapse' => 1),
-        'hidden' => array('showitem' => 'hidden', 'isHiddenPalette' => true),
     ),
     'columns' => array(
         't3ver_label' => array(
